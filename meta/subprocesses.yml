@@ -1,0 +1,71 @@
+subprocesses:
+  - name: Light Alloy Casting
+    slug: light-alloy-casting
+  - name: Cast Copper / Brass
+    slug: cast-copper-brass
+  - name: Zinc Die-cast
+    slug: zinc-die-cast
+  - name: Galvanizing
+    slug: galvanizing
+  - name: Remelting
+    slug: remelting
+  - name: Continuous Casting
+    slug: continuous-casting
+  - name: Casting / Casthouse
+    slug: casting-casthouse
+  - name: Iron / Steel Casting
+    slug: iron-steel-casting
+  - name: Extrusion
+    slug: extrusion
+  - name: Ingot Casting
+    slug: ingot-casting
+  - name: Ceramic Production
+    slug: ceramic-production
+  - name: Refractory
+    slug: refractory
+  - name: Refractory Lining Ladle
+    slug: refractory-lining-ladle
+  - name: Raw Material Drying
+    slug: raw-material-drying
+  - name: Gravure Printing
+    slug: gravure-printing
+  - name: Finishing
+    slug: finishing
+  - name: Pipe Production
+    slug: pipe-production
+  - name: Preheating of Molds
+    slug: preheating-of-molds
+  - name: Preheating of Ingots
+    slug: preheating-of-ingots
+  - name: Preheating of the Weld
+    slug: preheating-of-the-weld
+  - name: Correction Welding
+    slug: correction-welding
+  - name: Tempering
+    slug: tempering
+  - name: Coating of Molds
+    slug: coating-of-molds
+  - name: Coating Products
+    slug: coating-products
+  - name: Vulcanization
+    slug: vulcanization
+  - name: Flame Treating
+    slug: flame-treating
+  - name: Baking
+    slug: baking
+  - name: Shrink-wrapping
+    slug: shrink-wrapping
+  - name: Rolling Mill
+    slug: rolling-mill
+  - name: Washing
+    slug: washing
+  - name: Zinc Oxide Production
+    slug: zinc-oxide-production
+  - name: Flame Polishing
+    slug: flame-polishing
+  - name: Glass Vacuum Forming
+    slug: glass-vacuum-forming
+  - name: Glass Gravity Bending
+    slug: glass-gravity-bending
+  - name: Glass Hot Stamping
+    slug: glass-hot-stamping

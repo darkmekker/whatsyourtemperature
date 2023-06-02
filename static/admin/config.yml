@@ -15,6 +15,97 @@ public_folder: /img
 
 # Docs: https://www.netlifycms.org/docs/configuration-options/#collections
 collections:
+  - name: 'projects'
+    label: 'Projects'
+    label_singular: 'Project'
+    folder: 'content/projects'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    preview_path: 'projects/{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+      - {
+          label: 'Sub Processes',
+          name: 'subprocesses',
+          widget: 'relation',
+          multiple: true,
+          collection: 'meta',
+          file: 'subprocesses',
+          searchFields: ['subprocesses.*.name'],
+          displayFields: ['subprocesses.*.name'],
+          valueField: 'subprocesses.*.slug',
+        }
+      - {
+          label: 'Gallery',
+          name: 'gallery',
+          widget: 'list',
+          required: false,
+          summary: '{{fields.image}}',
+          field: { label: 'Image', name: 'image', widget: 'image' },
+        }
+      - { label: 'More link URL', name: 'moreLinkUrl', widget: 'string', required: false }
+
+  - name: 'processes'
+    label: 'Processes'
+    label_singular: 'Process'
+    folder: 'content/processes'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    preview_path: 'processes/{{slug}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - {
+          label: 'Sub Processes',
+          name: 'subprocesses',
+          widget: 'relation',
+          multiple: true,
+          collection: 'meta',
+          file: 'subprocesses',
+          searchFields: ['subprocesses.*.name'],
+          displayFields: ['subprocesses.*.name'],
+          valueField: 'subprocesses.*.slug',
+        }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+      - {
+          label: 'Projects',
+          name: 'projects',
+          widget: 'relation',
+          collection: 'projects',
+          multiple: true,
+          max: 4,
+          value_field: '{{slug}}',
+          search_fields: ['title'],
+          display_fields: ['title'],
+        }
+
+  - name: 'meta'
+    label: 'Meta'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: 'subprocesses'
+        label: 'Sub Processes'
+        file: 'meta/subprocesses.yml'
+        description: 'List of sub processes'
+        fields:
+          - name: subprocesses
+            label: Sub Processes
+            label_singular: 'Sub Process'
+            widget: list
+            fields:
+              - label: 'Slug'
+                name: 'slug'
+                widget: 'string'
+                hint: 'The part of a URL identifies the process'
+              - label: 'Display Name'
+                name: 'name'
+                widget: 'string'
+                hint: 'Process name for displaying on the site'
+
   - label: 'Site settings'
     name: 'site'
     files:
@@ -38,52 +129,3 @@ collections:
               widget: string,
               pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
             }
-          # - { label: Site Email, name: siteemail, widget: string, required: false }
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
-    create: true
-    format: 'frontmatter'
-    slug: '{{fields.createdAt}}-{{slug}}'
-    # editor:
-    #   preview: true
-    fields:
-      - {
-          label: 'Created Date',
-          name: 'createdAt',
-          widget: 'datetime',
-          format: 'YYYY-MM-DD',
-          date_format: 'YYYY-MM-DD',
-          time_format: false,
-        }
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
-      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
-  - name: 'projects'
-    label: 'Projects'
-    label_singular: 'Project'
-    folder: 'content/projects'
-    create: true
-    format: 'frontmatter'
-    slug: '{{slug}}'
-    preview_path: 'projects/{{slug}}'
-    fields:
-      - {
-          label: 'Processes',
-          name: 'category',
-          widget: 'select',
-          default: 'animals',
-          options: [{ label: 'Animals', value: 'animals' }, { label: 'Food', value: 'food' }],
-        }
-      - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Description', name: 'description', widget: 'string', required: false }
-      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
-      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
-      - {
-          label: 'Gallery',
-          name: 'gallery',
-          widget: 'list',
-          required: false,
-          summary: '{{fields.image}}',
-          field: { label: 'Image', name: 'image', widget: 'image' },
-        }
