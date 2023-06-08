@@ -10,23 +10,9 @@
         <div class="flex w-full mb-16">
           <div class="w-1/2 px-10">
             <h2 class="text-lg text-right mb-5">MY PROCESS</h2>
-
-            <ProcessList :containerHeight="400" @processListChange="formData.selectedProcess = $event" />
           </div>
           <div class="w-1/2 px-10">
             <h2 class="text-lg mb-5">MY TEMPERATURE</h2>
-
-            <VerticalRangeSlider
-              :min="100"
-              :max="1000"
-              :defaultValues="[100, 450]"
-              :containerHeight="400"
-              @sliderValueChange="
-                {
-                  ;(formData.selectedTempMin = $event[0].value), (formData.selectedTempMax = $event[1].value)
-                }
-              "
-            />
           </div>
         </div>
         <div class="w-full max-w-2xl">
