@@ -6,7 +6,7 @@
       <nuxt-content :document="content" />
     </header>
     <section v-show="content" class="w-full max-w-3xl mx-auto px-24 px-md-0">
-      <form @submit.prevent="submitForm" netlify ref="form">
+      <form @submit.prevent="submitForm" ref="form">
         <div class="flex w-full mb-16">
           <div class="w-1/2 px-10">
             <h2 class="text-lg text-right mb-5">MY PROCESS</h2>
