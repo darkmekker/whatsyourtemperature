@@ -104,6 +104,7 @@ export default {
         selectedProcess: '',
         selectedTempMin: null,
         selectedTempMax: null,
+        submissionDateTime: null,
       },
       showFormError: false,
     }
@@ -125,7 +126,18 @@ export default {
       }
     },
     copyFormDataToClipboard() {
-      const formDataText = JSON.stringify(this.formData, null, 2)
+      // Form is valid, set submission date/time
+      this.formData.submissionDateTime = new Date().toISOString()
+
+      //const formDataText = JSON.stringify(this.formData, null, 2)
+      // formDataText should show each form field on a new line
+      // with the field name and value separated by a colon
+
+      // Copy form data to clipboard
+      const formDataText = Object.entries(this.formData)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join('\n')
+
       navigator.clipboard
         .writeText(formDataText)
         .then(() => {
