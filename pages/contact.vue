@@ -1,11 +1,11 @@
 <template>
   <main>
-    <header class="w-full max-w-3xl mx-auto relative mb-4">
-      <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute -left-24" />
+    <header class="w-full max-w-3xl mx-auto relative mb-4 px-24 px-md-0">
+      <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute -left-0" />
       <h1 class="max-w-2xl">{{ content.title }}</h1>
       <nuxt-content :document="content" />
     </header>
-    <section v-if="content" class="w-full max-w-3xl mx-auto">
+    <section v-if="content" class="w-full max-w-3xl mx-auto px-24 px-md-0">
       <form @submit.prevent="submitForm" netlify ref="form">
         <div class="flex w-full mb-16">
           <div class="w-1/2 px-10">

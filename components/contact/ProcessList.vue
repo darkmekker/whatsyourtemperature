@@ -3,7 +3,7 @@
     <ul class="">
       <li
         :class="{ selected: selectedProcess === process }"
-        v-for="process in processes"
+        v-for="process in sortProcesses"
         :key="process.slug"
         @click="selectProcess(process)"
       >
@@ -36,7 +36,6 @@ export default {
       try {
         // Call the fetchPosts method to fetch the processes
         const processes = await this.fetchPosts('processes')
-        console.log('processes:', processes)
 
         // Update the processes array with the fetched data
         this.processes = processes
@@ -53,6 +52,15 @@ export default {
       return this.$content(postType)
         .fetch()
         .catch((err) => console.error(err) || [])
+    },
+  },
+  computed: {
+    sortProcesses() {
+      return this.processes.sort((a, b) => {
+        if (a.title < b.title) return -1
+        if (a.title > b.title) return 1
+        return 0
+      })
     },
   },
 }

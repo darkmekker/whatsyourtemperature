@@ -2,31 +2,26 @@
   <nav class="fixed z-40 top-0 inset-x-0" aria-label="Main Menu">
     <div class="menu-container" :class="{ 'menu-open': isMenuOpen }">
       <div class="hamburger" @click="toggleMenu">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+        <div class="line rounded"></div>
+        <div class="line rounded"></div>
+        <div class="line rounded"></div>
       </div>
       <div class="menu-panel">
-        <div class="hamburger" @click="toggleMenu">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </div>
-        <ul class="menu-items" @click="toggleMenu">
+        <ul class="menu-items text-lg" @click="toggleMenu">
           <li class="flex-1">
-            <nuxt-link class="btn block" to="/">Home</nuxt-link>
+            <nuxt-link class="block text-white p-2" to="/">Home</nuxt-link>
           </li>
-          <li class="flex-1 ml-2">
-            <nuxt-link class="btn block" to="/about">About</nuxt-link>
+          <li class="flex-1">
+            <nuxt-link class="block text-white p-2" to="/about">About Promeos</nuxt-link>
           </li>
-          <li class="flex-1 ml-2">
-            <nuxt-link class="btn block" to="/history">History</nuxt-link>
+          <li class="flex-1">
+            <nuxt-link class="block text-white p-2" to="/vision">Vision</nuxt-link>
           </li>
-          <li class="flex-1 ml-2">
-            <nuxt-link class="btn block" to="/research">Research</nuxt-link>
+          <li class="flex-1">
+            <nuxt-link class="block text-white p-2" to="/futureproof">Future Proof</nuxt-link>
           </li>
-          <li class="flex-1 ml-2">
-            <nuxt-link class="btn block" to="/contact">Contact</nuxt-link>
+          <li class="flex-1">
+            <nuxt-link class="block text-white p-2" to="/contact">Contact</nuxt-link>
           </li>
         </ul>
       </div>
@@ -87,13 +82,14 @@ export default {
   justify-content: space-between;
   cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 30px;
+  right: 30px;
+  z-index: 10;
 }
 
 .line {
   width: 100%;
-  height: 2px;
+  height: 4px;
   background-color: #fff;
 }
 
@@ -101,10 +97,11 @@ export default {
   position: absolute;
   top: 0;
   right: 0;
-  width: 200px;
-  height: 100%;
-  background-color: #111827;
-  padding: 20px;
+  width: 300px;
+  height: 100vh;
+  background-color: var(--bg);
+  border-left: 4px solid var(--color-primary);
+  padding: 60px 25px 20px;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
 }
@@ -121,10 +118,11 @@ export default {
 
 .menu-items li {
   margin-bottom: 10px;
+  font-family: var(--font-heading);
 }
 
 .nuxt-link-exact-active {
-  @apply text-gray-200 border-gray-400 bg-gray-800 bg-opacity-25 cursor-default;
+  @apply text-primary border-gray-400 rounded bg-gray-600 bg-opacity-25 cursor-default;
 }
 
 .light {
