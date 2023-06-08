@@ -1,9 +1,9 @@
 <template>
-  <div class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
+  <div v-if="processes" class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
     <ul class="">
       <li
         :class="{ selected: selectedProcess === process }"
-        v-for="process in sortProcesses"
+        v-for="process in processes"
         :key="process.slug"
         @click="selectProcess(process)"
       >
@@ -39,6 +39,11 @@ export default {
 
         // Update the processes array with the fetched data
         this.processes = processes
+
+        // scroll processList to half of the height of the container using nexttick
+        this.$nextTick(() => {
+          this.$refs.processList.scrollTop = this.containerHeight / 2
+        })
       } catch (error) {
         console.error(error)
         this.processes = [] // Set an empty array in case of an error
@@ -52,15 +57,6 @@ export default {
       return this.$content(postType)
         .fetch()
         .catch((err) => console.error(err) || [])
-    },
-  },
-  computed: {
-    sortProcesses() {
-      return this.processes.sort((a, b) => {
-        if (a.title < b.title) return -1
-        if (a.title > b.title) return 1
-        return 0
-      })
     },
   },
 }
