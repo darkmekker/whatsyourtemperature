@@ -17,8 +17,8 @@
     >
       <div class="handle-label">{{ handles[1].value }} C</div>
     </div>
-    <input type="hidden" :name="inputName(0)" :value="handles[0].value" />
-    <input type="hidden" :name="inputName(1)" :value="handles[1].value" />
+    <input type="hidden" name="selected-temp-min" :value="handles[0].value" />
+    <input type="hidden" name="selected-temp-max" :value="handles[1].value" />
   </div>
 </template>
 

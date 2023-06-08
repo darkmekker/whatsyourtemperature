@@ -67,10 +67,6 @@
             required
           ></textarea>
 
-          <input type="hidden" name="selected-process" v-model="formData.selectedProcess" />
-          <input type="hidden" name="selected-temp-min" v-model="formData.selectedSliderValMin" />
-          <input type="hidden" name="selected-temp-max" v-model="formData.selectedSliderValMax" />
-
           <div class="flex items-center">
             <input class="btn w-auto m-auto" type="submit" value="Submit" />
           </div>

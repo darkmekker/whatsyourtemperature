@@ -10,7 +10,7 @@
         {{ process.title }}
       </li>
     </ul>
-    <input type="hidden" v-model="selectedProcess.name" name="selectedProcess" />
+    <input type="hidden" v-model="selectedProcess.title" name="selectedProcess" />
   </div>
 </template>
 
