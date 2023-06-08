@@ -1,5 +1,5 @@
-site_url: https://ntn-boilerplate.netlify.app/
-logo_url: https://ntn-boilerplate.netlify.app/icon.png
+site_url: https://whatsyourtemperature.netlify.app
+logo_url: https://whatsyourtemperature.netlify.app/icon.png
 
 # publish_mode: editorial_workflow
 backend:
@@ -25,18 +25,26 @@ collections:
     preview_path: 'projects/{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
-      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
       - {
-          label: 'Sub Processes',
+          label: 'Process',
+          name: 'process',
+          widget: 'relation',
+          collection: 'processes',
+          searchFields: ['title'],
+          displayFields: ['title'],
+          valueField: '{{slug}}',
+        }
+      - {
+          label: 'Sub Process',
           name: 'subprocesses',
           widget: 'relation',
-          multiple: true,
+          multiple: false,
           collection: 'meta',
-          file: 'subprocesses',
           searchFields: ['subprocesses.*.name'],
           displayFields: ['subprocesses.*.name'],
           valueField: 'subprocesses.*.slug',
         }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
       - {
           label: 'Gallery',
           name: 'gallery',
@@ -60,6 +68,7 @@ collections:
       - {
           label: 'Sub Processes',
           name: 'subprocesses',
+          hint: 'These show below the process name on the homepage when zoomed in',
           widget: 'relation',
           multiple: true,
           collection: 'meta',
@@ -68,10 +77,10 @@ collections:
           displayFields: ['subprocesses.*.name'],
           valueField: 'subprocesses.*.slug',
         }
-      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
       - {
-          label: 'Projects',
+          label: 'Linked Projects',
           name: 'projects',
+          hint: 'The projects to show on this process page',
           widget: 'relation',
           collection: 'projects',
           multiple: true,
@@ -80,6 +89,7 @@ collections:
           search_fields: ['title'],
           display_fields: ['title'],
         }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
 
   - name: 'meta'
     label: 'Meta'
@@ -105,6 +115,142 @@ collections:
                 name: 'name'
                 widget: 'string'
                 hint: 'Process name for displaying on the site'
+
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - file: 'content/about/_index.md'
+        label: 'About Page'
+        name: 'home'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Subtitle, name: subtitle, widget: string }
+          - { label: Image, name: image, widget: image }
+          - {
+              label: 'Blurb',
+              name: blurb,
+              widget: object,
+              fields:
+                [
+                  { label: 'Heading', name: 'heading', widget: string },
+                  { label: 'Text', name: 'text', widget: 'text' },
+                ],
+            }
+          - {
+              label: 'Intro',
+              name: intro,
+              widget: object,
+              fields:
+                [
+                  { label: 'Heading', name: 'heading', widget: string },
+                  { label: 'Text', name: 'text', widget: 'text' },
+                ],
+            }
+          - {
+              label: 'Products',
+              name: products,
+              widget: list,
+              fields:
+                [{ label: 'Image', name: 'image', widget: 'image' }, { label: 'Text', name: 'text', widget: 'text' }],
+            }
+          - {
+              label: 'Values',
+              name: 'values',
+              widget: 'object',
+              fields:
+                [
+                  { label: 'Heading', name: 'heading', widget: string },
+                  { label: 'Text', name: 'text', widget: 'text' },
+                ],
+            }
+      - file: 'content/contact/_index.md'
+        label: 'Contact Page'
+        name: 'contact'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: 'content/products/_index.md'
+        label: 'Products Page'
+        name: 'products'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Image, name: image, widget: image }
+          - { label: Heading, name: heading, widget: string }
+          - { label: Description, name: description, widget: string }
+          - {
+              label: Intro,
+              name: intro,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
+                  {
+                    label: Blurbs,
+                    name: blurbs,
+                    widget: list,
+                    fields: [{ label: Image, name: image, widget: image }, { label: Text, name: text, widget: text }],
+                  },
+                ],
+            }
+          - {
+              label: Main,
+              name: main,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: text },
+                  {
+                    label: Image1,
+                    name: image1,
+                    widget: object,
+                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
+                  },
+                  {
+                    label: Image2,
+                    name: image2,
+                    widget: object,
+                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
+                  },
+                  {
+                    label: Image3,
+                    name: image3,
+                    widget: object,
+                    fields: [{ label: Image, name: image, widget: image }, { label: Alt, name: alt, widget: string }],
+                  },
+                ],
+            }
+          - {
+              label: Testimonials,
+              name: testimonials,
+              widget: list,
+              fields: [{ label: Quote, name: quote, widget: string }, { label: Author, name: author, widget: string }],
+            }
+          - { label: Full_image, name: full_image, widget: image }
+          - {
+              label: Pricing,
+              name: pricing,
+              widget: object,
+              fields:
+                [
+                  { label: Heading, name: heading, widget: string },
+                  { label: Description, name: description, widget: string },
+                  {
+                    label: Plans,
+                    name: plans,
+                    widget: list,
+                    fields:
+                      [
+                        { label: Plan, name: plan, widget: string },
+                        { label: Price, name: price, widget: string },
+                        { label: Description, name: description, widget: string },
+                        { label: Items, name: items, widget: list },
+                      ],
+                  },
+                ],
+            }
 
   - label: 'Site settings'
     name: 'site'

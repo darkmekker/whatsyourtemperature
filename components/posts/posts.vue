@@ -1,10 +1,10 @@
 <template>
   <ul v-if="posts.length > 0">
     <li v-for="(post, index) in posts" :key="index">
-      <nuxt-link :to="`/${postType}/${post.slug}`" class="card card--clickable">
+      <nuxt-link :to="`/processes/${post.slug}`" class="card card--clickable">
         <span class="flex-1">
           <h3 class="card-title">{{ post.title }}</h3>
-          <div v-if="post.subprocesses" class="nuxt-content">
+          <div v-if="post.subprocesses.length > 0" class="nuxt-content">
             <ul>
               <li v-for="(subprocess, index) in post.subprocesses" :key="subprocess.slug">
                 <div>{{ subprocess }}</div>
@@ -33,8 +33,8 @@ export default {
   props: {
     postType: {
       type: String,
-      default: 'blog',
-      validator: (val) => ['blog', 'projects'].includes(val),
+      default: 'processes',
+      validator: (val) => ['processes', 'projects'].includes(val),
     },
     amount: {
       // ? https://content.nuxtjs.org/fetching#limitn
@@ -75,11 +75,13 @@ export default {
       return date.toLocaleDateString(process.env.lang) || ''
     },
     async fetchPosts(postType = this.postType, amount = this.amount, sortBy = this.sortBy) {
-      return this.$content(postType)
-        .sortBy(sortBy.key, sortBy.direction)
-        .limit(amount)
-        .fetch()
-        .catch((err) => console.error(err) || [])
+      return postType
+        ? this.$content(postType.toString())
+            .sortBy(sortBy.key, sortBy.direction)
+            .limit(amount)
+            .fetch()
+            .catch((err) => console.error(err) || [])
+        : []
     },
   },
 }

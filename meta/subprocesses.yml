@@ -3,16 +3,28 @@ subprocesses:
     slug: light-alloy-casting
   - name: Cast Copper / Brass
     slug: cast-copper-brass
-  - name: Zinc Die-cast
+  - name: Melting
+    slug: melting
+  - name: Tilting Furnace
+    slug: tilting-furnace
+  - name: Heatdock & Mpot
+    slug: heatdock-mpot
+  - name: Melting System
+    slug: melting-system
+  - name: Drawing Furnace
+    slug: drawing-furnace
+  - name: Zinc Die-Cast
     slug: zinc-die-cast
+  - name: Galvanizing Vessel
+    slug: galvanizing-vessel
   - name: Galvanizing
     slug: galvanizing
   - name: Remelting
     slug: remelting
   - name: Continuous Casting
     slug: continuous-casting
-  - name: Casting / Casthouse
-    slug: casting-casthouse
+  - name: Preheating
+    slug: preheating
   - name: Iron / Steel Casting
     slug: iron-steel-casting
   - name: Extrusion
@@ -21,48 +33,66 @@ subprocesses:
     slug: ingot-casting
   - name: Ceramic Production
     slug: ceramic-production
+  - name: Sand Preparation
+    slug: sand-preparation
   - name: Refractory
     slug: refractory
-  - name: Refractory Lining Ladle
-    slug: refractory-lining-ladle
   - name: Raw Material Drying
     slug: raw-material-drying
   - name: Gravure Printing
     slug: gravure-printing
   - name: Finishing
     slug: finishing
+  - name: Heat Treatment
+    slug: heat-treatment
   - name: Pipe Production
     slug: pipe-production
+  - name: Annealing Shuttle Kiln
+    slug: annealing-shuttle-kiln
+  - name: Annealing Continuous Furnace
+    slug: annealing-continuous-furnace
+  - name: Hardening
+    slug: hardening
+  - name: Forging
+    slug: forging
   - name: Preheating of Molds
     slug: preheating-of-molds
   - name: Preheating of Ingots
     slug: preheating-of-ingots
-  - name: Preheating of the Weld
-    slug: preheating-of-the-weld
+  - name: Welding
+    slug: welding
   - name: Correction Welding
     slug: correction-welding
   - name: Tempering
     slug: tempering
+  - name: Coating
+    slug: coating
   - name: Coating of Molds
     slug: coating-of-molds
   - name: Coating Products
     slug: coating-products
   - name: Vulcanization
     slug: vulcanization
+  - name: Pre-Shock System
+    slug: pre-shock-system
+  - name: Salt Bath Heating System
+    slug: salt-bath-heating-system
   - name: Flame Treating
     slug: flame-treating
+  - name: Afterburning
+    slug: afterburning
   - name: Baking
     slug: baking
-  - name: Shrink-wrapping
+  - name: Shrink-Wrapping
     slug: shrink-wrapping
   - name: Rolling Mill
     slug: rolling-mill
   - name: Washing
     slug: washing
-  - name: Zinc Oxide Production
-    slug: zinc-oxide-production
-  - name: Flame Polishing
-    slug: flame-polishing
+  - name: Vaporizing
+    slug: vaporizing
+  - name: Polishing
+    slug: polishing
   - name: Glass Vacuum Forming
     slug: glass-vacuum-forming
   - name: Glass Gravity Bending

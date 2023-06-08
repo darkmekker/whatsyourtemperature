@@ -8,14 +8,6 @@
       <article>
         <img v-if="post.cover" class="cover-image" :src="post.cover" />
         <h1>{{ post.title }}</h1>
-        <div v-if="post.subprocesses" class="nuxt-content">
-          <ul>
-            <li v-for="(subprocess, index) in post.subprocesses" :key="subprocess.slug">
-              <div>{{ subprocess }}</div>
-            </li>
-          </ul>
-        </div>
-
         <nuxt-content :document="post" />
         <!-- List post.subprocesses -->
 
@@ -79,7 +71,7 @@ export default {
         post.projects.map(async (slug) => {
           try {
             const project = await $content('projects').where({ slug }).fetch()
-            return project[0]
+            return project[0] ? project[0] : null
           } catch (e) {
             console.error(`Failed to fetch project with slug '${slug}':`, e)
             return null

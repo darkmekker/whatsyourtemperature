@@ -4,44 +4,35 @@
   * The CSS Variables are then used in tailwind.config.js so that e.g. `bg-primary-200` can be used.
   */
 :root {
-  --color-primary-100: #ECEFF5;
-  --color-primary-200: #C3CBDC;
-  --color-primary-300: #9BA8C2;
-  --color-primary-400: #7686A6;
-  --color-primary:     #526488;
-  --color-primary-600: #3E4F70;
-  --color-primary-700: #2C3A57;
-  --color-primary-800: #1C263B;
-  --color-primary-900: #0D131E;
+  --color-white: #ffffff;
 
-  --color-gray-50:     #F9FAFB;
-  --color-gray-100:    #F3F4F6;
-  --color-gray-200:    #E5E7EB;
-  --color-gray-300:    #D1D5DB;
-  --color-gray-400:    #9CA3AF;
-  --color-gray:        #6B7280;
-  --color-gray-600:    #4B5563;
-  --color-gray-700:    #374151;
-  --color-gray-800:    #1F2937;
-  --color-gray-900:    #111827;
+  --color-primary-100: #e5e9f2;
+  --color-primary-200: #b8c4d8;
+  --color-primary-300: #8b9fbf;
+  --color-primary-400: #5e79a5;
+  --color-primary: #e4361b;
+  --color-primary-600: #34425c;
+  --color-primary-700: #223146;
+  --color-primary-800: #111a2b;
+  --color-primary-900: #080e16;
 
-  --text: var(--color-primary-200);
-  --text-secondary: var(--color-primary-400);
+  --color-gray-50: #f8f9fa;
+  --color-gray-100: #f1f3f5;
+  --color-gray-200: #d7dde3;
+  --color-gray-300: #bdc5cd;
+  --color-gray-400: #89919a;
+  --color-gray: #717171;
+  --color-gray-600: #424242;
+  --color-gray-700: #2f2f2f;
+  --color-gray-800: #1a1a1a;
+  --color-gray-900: #0d0d0d;
 
-  --bg: var(--color-gray-900);
-  --bg-secondary: var(--color-gray-800);
+  --text: var(--color-white);
+  --text-secondary: var(--color-gray);
+
+  --bg: #170303;
+  --bg-secondary: var(--color-gray);
 
   --border-color: var(--color-primary-400);
   --border-color-secondary: var(--color-primary);
-}
-
-.light {
-  --text: var(--color-primary-800);
-  --text-secondary: var(--color-primary-600);
-
-  --bg: var(--color-gray-200);
-  --bg-secondary: var(--color-gray-100);
-
-  --border-color: var(--color-primary);
-  --border-color-secondary: var(--color-primary-600);
 }
