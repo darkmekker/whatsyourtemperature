@@ -23,7 +23,7 @@
           <div class="process-inner">
             <h1 class="process-name shadow">{{ process.name }}</h1>
             <div class="process-content">
-              <ul class="subprocesses" v-if="process.selected">
+              <ul class="subprocesses" v-show="process.selected">
                 <li v-for="subprocess in process.subprocesses" :key="subprocess" class="shadow">{{ subprocess }}</li>
               </ul>
               <a :href="process.slug" class="process-link">More Info</a>

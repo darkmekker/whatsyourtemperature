@@ -6,24 +6,14 @@
     }
 
     &.btn--active {
-      @apply text-white bg-primary border-primary;
       &:hover {
-        @apply bg-primary-600;
+        @apply bg-gray-700;
       }
     }
     &.btn--disabled,
     &[disabled='true'],
     &:disabled {
       @apply text-gray-400 cursor-not-allowed;
-    }
-  }
-
-  .light {
-    & .btn {
-      @apply border-primary-600 text-primary-800 bg-gray-200;
-      &:hover {
-        @apply border-primary bg-primary-200 text-primary-900;
-      }
     }
   }
 }

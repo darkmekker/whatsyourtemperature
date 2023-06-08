@@ -5,7 +5,7 @@
       <h1 class="max-w-2xl">{{ content.title }}</h1>
       <nuxt-content :document="content" />
     </header>
-    <section v-if="content" class="w-full max-w-3xl mx-auto px-24 px-md-0">
+    <section v-show="content" class="w-full max-w-3xl mx-auto px-24 px-md-0">
       <form @submit.prevent="submitForm" netlify ref="form">
         <div class="flex w-full mb-16">
           <div class="w-1/2 px-10">
@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="w-full max-w-2xl">
-          <p v-if="showFormError" class="text-red-500 text-center mb-5">Please fill out all fields</p>
+          <p v-show="showFormError" class="text-red-500 text-center mb-5">Please fill out all fields</p>
 
           <label class="sr-only" for="company-name">Company Name</label>
           <input
