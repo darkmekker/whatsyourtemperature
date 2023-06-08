@@ -5,8 +5,8 @@
       <h1 class="max-w-2xl">{{ content.title }}</h1>
       <nuxt-content :document="content" />
     </header>
-    <section v-show="content" class="w-full max-w-3xl mx-auto px-24 px-md-0">
-      <form @submit.prevent="submitForm" netlify ref="form">
+    <section class="w-full max-w-3xl mx-auto px-24 px-md-0">
+      <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form">
         <input type="hidden" name="form-name" value="Contact Form" />
         <div class="flex w-full mb-16">
           <div class="w-1/2 px-10">
