@@ -1,14 +1,12 @@
 ---
 title: tempering
 subprocesses:
-  - IR
-  - burners
-  - line
-  - tempering
+  - glass-industry
+projects:
+  - line-type-ir-burners
+  - tempering-plate
+  - tempering-tunnel
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for easy process control: Our homogeneously radiant burner modules are easy to be integrated into a furnace wall or ceiling and offer you infinitely variable power density. Modernize your processes to reduce energy consumption and emissions!
+

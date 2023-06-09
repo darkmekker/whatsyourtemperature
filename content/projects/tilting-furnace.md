@@ -1,9 +1,10 @@
 ---
 title: tilting furnace
-process: bk_melting
-subprocesses: light-alloy-casting
+process: melting
+subprocesses:
+  - light-alloy-casting
 gallery:
-  - /img/rectangle-47.png
-  - /img/placeholder-320x180.png
 ---
-Project description with now around 800 characters for our very special client, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, example link in copy vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, example link in copy vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
+
+- for aluminium (light metal) and copper alloys - capacity up to 1.200 kg (Al) - Melting rate from 100 to 450 kg/h (Al) - By a specific consumption of 0.8-1 kWh/kg (Al)  The promeos tiltable crucible furnace with flameless gas burner technology stands for a high energy efficiency and increased effectiveness on melting of Aluminium, and non-ferrous alloys.  Flue gases of totally premixed and almost stoichiometric combustion surround crucible without “hot spots” and due to homogeneous and effective heat transfer verifiable energy savings of up to 35 % will be achieved. This leads to extended crucible lifetime and reduces production stops. Reduced velocity and heating without open flame avoid erosion and enable application of light isolation materials with low density.
+

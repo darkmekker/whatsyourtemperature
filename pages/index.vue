@@ -20,6 +20,7 @@
             v-for="process in processes"
             :key="process.id"
             :ref="process.id"
+            v-show="process.projects"
             class="process"
             :class="{ hidden: !process.selected && !process.visible, zoomed: process.selected }"
             :style="{
@@ -88,6 +89,7 @@ export default {
           name: process.title,
           content: process.content,
           subprocesses: process.subprocesses || [],
+          projects: process.projects || [],
           link: process.link || '',
           selected: false,
           visible: true,
@@ -243,7 +245,7 @@ export default {
 
 .zoom-wrapper {
   width: 100%; /* Use max-content to expand horizontally */
-  height: 100%;
+  height: 70%;
   position: relative;
   z-index: 2;
   display: flex;

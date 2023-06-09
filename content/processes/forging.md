@@ -1,16 +1,13 @@
 ---
 title: forging
 subprocesses:
-  - heating
-  - mobile
-  - molds
-  - of
-  - preheating
-  - system
+  - hot-stamping
+projects:
+  - automated-tool-heating
+  - mobile-mould-heating-system
+  - mobile-press-heating
+  - pusher-furnace
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for challenging surroundings: Save energy and enhance output quality through our heating solutions. We innovate thermal processes: fully automated, IOT ready, heatelligent and with minimal emissions.
+

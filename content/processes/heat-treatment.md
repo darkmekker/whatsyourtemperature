@@ -1,16 +1,16 @@
 ---
 title: heat treatment
 subprocesses:
-  - annealing
-  - casthouse
-  - casting
-  - kiln
-  - shuttle
+  - casting-/-casthouse
+  - iron-foundry
+  - light-alloy-casting
+  - pipe-production
+projects:
+  - ir-tunnel-furnace
+  - annealing-shuttle-kiln
+  - hybrid-convection-chamber-furnace
+  - hybrid-convection-shuttle-kiln
 ---
 
-We offer energy-efficient, solutions for numerous industries and requirements –
-in series or individually tailored to your process.
-For metal processing, pharmaceutical industry, food production,
-plastics industry, recycling and many more.
-Convince yourself of our references
-or[ send us an inquiry](#) for personal consultation!
+We design heat for class A requirements: Our individually designed promeos burners are your key to design temperature fields at optimum fluid mechanics – the prerequisite to control the thermal process even in large oven chambers. Use flameless heat solutions with low velocity flue gases to get the best performance out of your material.
+

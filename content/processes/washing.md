@@ -1,13 +1,12 @@
 ---
 title: washing
 subprocesses:
-  - burner
-  - systems
+  - logistic-industry
   - washing
+projects:
+  - burner-system
+  - hybrid-heating-system
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for your requirements: With our pre-engineered or tailor-made solutions, you will maximize efficiency and productivity while reducing CO2 emissions and scrap. Get the most out of your thermal processes and become future-proof with promeos heatelligence.
+

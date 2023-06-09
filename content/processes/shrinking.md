@@ -1,13 +1,11 @@
 ---
 title: shrinking
 subprocesses:
-  - burner
+  - rolling-mill
   - shrink-wrapping
-  - systems
+projects:
+  - hybrid-heating-system
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for energy efficiency: Our homogeneous heat sources, both for gas and electricity, guarantee an optimum temperature distribution  at any capacity and speed of production.
+

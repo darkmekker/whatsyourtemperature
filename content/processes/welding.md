@@ -1,14 +1,14 @@
 ---
 title: welding
 subprocesses:
-  - of
-  - preheating
-  - the
-  - weld
+  - correction-welding
+  - pipe-production
+  - pipeline-production
+projects:
+  - chamber-furnace
+  - curved-ir-burner
+  - line-ir-burner
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for high gradients: Our flameless burner technology is your solution for homogeneous, efficient and fast heat transfer into metallic surfaces. Define your needs and we provide the optimum tool!
+

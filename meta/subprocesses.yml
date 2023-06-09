@@ -1,101 +1,91 @@
 subprocesses:
-  - name: Light Alloy Casting
+  - name: light alloy casting
     slug: light-alloy-casting
-  - name: Cast Copper / Brass
-    slug: cast-copper-brass
-  - name: Melting
-    slug: melting
-  - name: Tilting Furnace
-    slug: tilting-furnace
-  - name: Heatdock & Mpot
-    slug: heatdock-mpot
-  - name: Melting System
-    slug: melting-system
-  - name: Drawing Furnace
-    slug: drawing-furnace
-  - name: Zinc Die-Cast
-    slug: zinc-die-cast
-  - name: Galvanizing Vessel
-    slug: galvanizing-vessel
-  - name: Galvanizing
+  - name: copper foundry
+    slug: copper-foundry
+  - name: zinc die-cast
+    slug: zinc--die-cast
+  - name: galvanizing
     slug: galvanizing
-  - name: Remelting
+  - name: remelting
     slug: remelting
-  - name: Continuous Casting
+  - name: continuous casting
     slug: continuous-casting
-  - name: Preheating
-    slug: preheating
-  - name: Iron / Steel Casting
-    slug: iron-steel-casting
-  - name: Extrusion
-    slug: extrusion
-  - name: Ingot Casting
-    slug: ingot-casting
-  - name: Ceramic Production
-    slug: ceramic-production
-  - name: Sand Preparation
-    slug: sand-preparation
-  - name: Refractory
-    slug: refractory
-  - name: Raw Material Drying
-    slug: raw-material-drying
-  - name: Gravure Printing
-    slug: gravure-printing
-  - name: Finishing
-    slug: finishing
-  - name: Heat Treatment
-    slug: heat-treatment
-  - name: Pipe Production
-    slug: pipe-production
-  - name: Annealing Shuttle Kiln
-    slug: annealing-shuttle-kiln
-  - name: Annealing Continuous Furnace
-    slug: annealing-continuous-furnace
-  - name: Hardening
-    slug: hardening
-  - name: Forging
-    slug: forging
-  - name: Preheating of Molds
-    slug: preheating-of-molds
-  - name: Preheating of Ingots
-    slug: preheating-of-ingots
-  - name: Welding
-    slug: welding
-  - name: Correction Welding
-    slug: correction-welding
-  - name: Tempering
-    slug: tempering
-  - name: Coating
-    slug: coating
-  - name: Coating of Molds
-    slug: coating-of-molds
-  - name: Coating Products
-    slug: coating-products
-  - name: Vulcanization
-    slug: vulcanization
-  - name: Pre-Shock System
-    slug: pre-shock-system
-  - name: Salt Bath Heating System
-    slug: salt-bath-heating-system
-  - name: Flame Treating
-    slug: flame-treating
-  - name: Afterburning
-    slug: afterburning
-  - name: Baking
-    slug: baking
-  - name: Shrink-Wrapping
-    slug: shrink-wrapping
-  - name: Rolling Mill
+  - name: rolling mill
     slug: rolling-mill
-  - name: Washing
+  - name: pipe production
+    slug: pipe-production
+  - name: casting / casthouse
+    slug: casting-/-casthouse
+  - name: iron / steel casting
+    slug: iron-/-steel-casting
+  - name: extrusion
+    slug: extrusion
+  - name: ingot casting
+    slug: ingot-casting
+  - name: iron and steel casting
+    slug: iron-and-steel-casting
+  - name: ceramic production
+    slug: ceramic-production
+  - name: foundry
+    slug: foundry
+  - name: refractory
+    slug: refractory
+  - name: refractory lining ladle
+    slug: refractory-lining-ladle
+  - name: raw material drying
+    slug: raw-material-drying
+  - name: ceramic crucible production
+    slug: ceramic-crucible-production
+  - name: copper mill
+    slug: copper-mill
+  - name: gravure printing
+    slug: gravure-printing
+  - name: finishing
+    slug: finishing
+  - name: iron foundry
+    slug: iron-foundry
+  - name: hot stamping
+    slug: hot-stamping
+  - name: pipeline production
+    slug: pipeline-production
+  - name: correction welding
+    slug: correction-welding
+  - name: glass industry
+    slug: glass-industry
+  - name: coating of molds
+    slug: coating-of-molds
+  - name: coating products
+    slug: coating-products
+  - name: melting
+    slug: melting
+  - name: rubber processing
+    slug: rubber-processing
+  - name: vulcanization
+    slug: vulcanization
+  - name: automotive
+    slug: automotive
+  - name: technical textiles
+    slug: technical-textiles
+  - name: textile production
+    slug: textile-production
+  - name: drying
+    slug: drying
+  - name: baking
+    slug: baking
+  - name: shrink-wrapping
+    slug: shrink-wrapping
+  - name: logistic industry
+    slug: logistic-industry
+  - name: washing
     slug: washing
-  - name: Vaporizing
-    slug: vaporizing
-  - name: Polishing
-    slug: polishing
-  - name: Glass Vacuum Forming
+  - name: zinc oxide production
+    slug: zinc-oxide-production
+  - name: flame polishing
+    slug: flame-polishing
+  - name: glass vacuum forming
     slug: glass-vacuum-forming
-  - name: Glass Gravity Bending
+  - name: glass gravity bending
     slug: glass-gravity-bending
-  - name: Glass Hot Stamping
+  - name: glass hot stamping
     slug: glass-hot-stamping

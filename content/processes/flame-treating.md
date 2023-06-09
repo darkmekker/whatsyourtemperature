@@ -1,15 +1,14 @@
 ---
 title: flame treating
 subprocesses:
-  - 360°
-  - continuous
-  - flame
-  - furnace
-  - treating
+  - automotive
+  - technical-textiles
+  - textile-production
+projects:
+  - 360°-ir-tunnel-furnace
+  - line-ir-burner
+  - line-ir-burner-2
 ---
-We offer energy-efficient, solutions for numerous industries and requirements – 
-in series or individually tailored to your process. 
-For metal processing, pharmaceutical industry, food production, 
-plastics industry, recycling and many more. 
-Convince yourself of our references 
-or[ send us an inquiry](#) for personal consultation!
+
+We design heat for high standards: Increase productivity and reduce emissions with our tailor-made solutions. Our technology can also be integrated into existing production systems to make your production chain future-proof.
+
