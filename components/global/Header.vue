@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed z-40 top-0 inset-x-0" aria-label="Main Menu">
+  <nav class="fixed z-50 top-0 inset-x-0" aria-label="Main Menu">
     <div class="menu-container" :class="{ 'menu-open': isMenuOpen }">
       <div class="hamburger" @click="toggleMenu">
         <div class="line rounded"></div>

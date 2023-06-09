@@ -1,32 +1,47 @@
 <template>
-  <div class="zoom-window" ref="zoomWindow">
-    <div class="video-background" ref="videoBackground">
-      <video class="video" ref="video" autoplay muted loop>
-        <source src="@/assets/video/vbg.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <div class="zoom-wrapper" ref="zoomWrapper" @click="handleOverlayClick">
-      <div class="process-wrapper">
-        <div
-          v-for="process in processes"
-          :key="process.id"
-          :ref="process.id"
-          class="process"
-          :class="{ hidden: !process.selected && !process.visible, zoomed: process.selected }"
-          :style="{
-            width: process.selected ? '600px' : `${process.width}px`,
-            height: process.selected ? 'auto' : `${process.height}px`,
-            marginLeft: `${process.margin}px`,
-          }"
-          @click="selectProcess(process)"
-        >
-          <div class="process-inner">
-            <h1 class="process-name shadow">{{ process.name }}</h1>
-            <div class="process-content">
-              <ul class="subprocesses" v-show="process.selected">
-                <li v-for="subprocess in process.subprocesses" :key="subprocess" class="shadow">{{ subprocess }}</li>
-              </ul>
-              <a :href="process.slug" class="process-link">More Info</a>
+  <div>
+    <div class="zoom-window" ref="zoomWindow" @click="handleOverlayClick">
+      <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-16 pb-0" ref="mainHeader">
+        <header class="w-full mx-auto mb-4 px-24 px-md-0 relative">
+          <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute -left-0" />
+          <h1 class="max-w-2xl">{{ content.title }}</h1>
+          <nuxt-content :document="content" />
+        </header>
+      </main>
+
+      <div class="video-background" ref="videoBackground">
+        <video class="video" ref="video" autoplay muted loop>
+          <source src="@/assets/video/vbg.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="zoom-wrapper" ref="zoomWrapper">
+        <div class="process-wrapper px-32 pb-24" ref="processWrapper">
+          <div
+            v-for="process in processes"
+            :key="process.id"
+            :ref="process.id"
+            class="process"
+            :class="{ hidden: !process.selected && !process.visible, zoomed: process.selected }"
+            :style="{
+              width: process.selected ? '600px' : `${process.width}px`,
+              height: process.selected ? 'auto' : `${process.height}px`,
+              marginLeft: `${process.margin}px`,
+            }"
+            @click="selectProcess(process)"
+          >
+            <div class="process-inner">
+              <h1 class="process-name text-shadow">{{ process.name }}</h1>
+              <div class="process-content">
+                <ul class="subprocesses font-heading" v-show="process.selected">
+                  <li v-for="subprocess in process.subprocesses" :key="subprocess" class="text-shadow">
+                    {{ subprocess }}
+                  </li>
+                </ul>
+
+                <div class="process-link">
+                  <nuxt-link :to="`/processes/${process.id}`" class="btn btn-primary">See our references</nuxt-link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -37,6 +52,16 @@
 
 <script>
 export default {
+  layout: 'home',
+  async asyncData({ $content, error }) {
+    let content
+    try {
+      content = await $content('home/_index').fetch()
+    } catch (e) {
+      error({ message: 'Home data not found' })
+    }
+    return { content }
+  },
   data() {
     return {
       processes: [],
@@ -86,9 +111,9 @@ export default {
 
       let currentPosition = 0
       this.processes.forEach((process) => {
-        const width = Math.random() * 200 + 200 // Random width between 200 and 400
-        const height = Math.random() * 200 + minProcessHeight // Random height between minProcessHeight and (minProcessHeight + 200)
-        const margin = Math.random() * minSpacing + minSpacing // Random margin between minSpacing and (2 * minSpacing)
+        const width = Math.random() * 100 + 100 // Random width between 200 and 400
+        const height = Math.random() * 100 + minProcessHeight // Random height between minProcessHeight and (minProcessHeight + 200)
+        const margin = Math.random() * minSpacing // Random margin between minSpacing and (2 * minSpacing)
 
         process.width = width
         process.height = height
@@ -111,7 +136,7 @@ export default {
           p.selected = p === process
           p.visible = p === process
         })
-        this.scrollSelectedProcessIntoView()
+        //this.scrollSelectedProcessIntoView()
         // scale the videoBackground to 2
       }
     },
@@ -135,10 +160,13 @@ export default {
       }
     },
     handleOverlayClick(event) {
-      // if clicked zoomWrapper, reset scroll position
-      console.log(event.target)
-      console.log(this.$refs.zoomWrapper)
-      if (event.target === this.$refs.zoomWrapper) {
+      //is clicking outside a process
+      if (
+        event.target === this.$refs.zoomWrapper ||
+        event.target === this.$refs.processWrapper ||
+        event.target === this.$refs.zoomWindow ||
+        event.target === this.$refs.mainHeader
+      ) {
         this.resetScrollPosition()
       }
     },
@@ -169,6 +197,7 @@ export default {
     },
 
     adjustZoomWrapperWidth() {
+      return
       const zoomWrapper = this.$refs.zoomWrapper
       const processes = this.processes
 
@@ -191,9 +220,9 @@ export default {
 .zoom-window {
   width: 100%;
   height: 100vh;
-  overflow-x: auto;
-  display: flex;
-  align-items: flex-start; /* Align items at the top */
+  overflow: hidden;
+  display: block;
+  position: relative;
 }
 
 .video-background {
@@ -213,33 +242,34 @@ export default {
 }
 
 .zoom-wrapper {
-  position: absolute;
-  height: 50%;
-  width: max-content; /* Use max-content to expand horizontally */
-  left: 0;
-  bottom: 10%;
+  width: 100%; /* Use max-content to expand horizontally */
+  height: 100%;
+  position: relative;
   z-index: 2;
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  overflow-x: auto;
 }
 .process-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start; /* Align items at the top */
-  max-height: 100%;
-  padding: 0 50px;
+  width: 200%;
 }
 .process {
-  display: flex;
+  display: block;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
   cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 .process-inner {
-  display: flex;
-  align-items: start;
 }
 
 .process-name {
@@ -269,20 +299,31 @@ export default {
 
 .process.zoomed {
   z-index: 2;
+  margin-left: 0 !important;
 }
 .process.zoomed .process-content {
   display: block;
 }
+.process.zoomed .process-name {
+  font-size: 50px;
+}
+.process.zoomed .process-name:after {
+  border-left-width: 8px;
+  left: -22px;
+  height: 400px;
+}
 
 .subprocesses {
+  display: block;
+  margin: 15px 0 50px;
   list-style-type: none;
-  margin: 0;
   padding: 0;
+  font-size: 35px;
+  line-height: 1.2;
 }
 
 .process-link {
-  margin-top: 10px;
-  text-align: center;
+  display: block;
   color: blue;
   text-decoration: underline;
 }

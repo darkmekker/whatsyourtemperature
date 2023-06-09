@@ -121,7 +121,7 @@ collections:
     files:
       - file: 'content/about/_index.md'
         label: 'About Page'
-        name: 'home'
+        name: 'about'
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Subtitle, name: subtitle, widget: string }
@@ -166,6 +166,13 @@ collections:
       - file: 'content/contact/_index.md'
         label: 'Contact Page'
         name: 'contact'
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Body, name: body, widget: markdown }
+
+      - file: 'content/home/_index.md'
+        label: 'Home Page'
+        name: 'home'
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Body, name: body, widget: markdown }
