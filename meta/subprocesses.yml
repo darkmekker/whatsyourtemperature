@@ -73,7 +73,7 @@ subprocesses:
     slug: drying
   - name: baking
     slug: baking
-  - name: shrink-wrapping
+  - name: shrink wrapping
     slug: shrink-wrapping
   - name: logistic industry
     slug: logistic-industry

@@ -18,7 +18,7 @@
 
               <!-- Get the first subprocess that matches the post.subprocesses -->
               <div v-if="project.subprocesses">
-                <div v-for="(subprocess, index) in project.subprocesses" :key="subprocess">
+                <div v-for="(subprocess, index) in project.subprocesses" :key="index">
                   <div v-if="post.subprocesses.includes(subprocess)">{{ subprocess }}</div>
                 </div>
               </div>

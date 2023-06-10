@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="zoom-window" ref="zoomWindow" @click="handleOverlayClick">
-      <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-16 pb-0" ref="mainHeader">
-        <header class="w-full mx-auto mb-4 px-24 px-md-0 relative">
-          <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute -left-0" />
+    <div class="zoom-window overflow-auto md:overflow-hidden" ref="zoomWindow" @click="handleOverlayClick">
+      <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-6 md:pt-16 pb-0" ref="mainHeader">
+        <header class="w-full mx-auto mb-4 pt-20 md:px-24 relative">
+          <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
           <h1 class="max-w-2xl">{{ content.title }}</h1>
           <nuxt-content :document="content" />
         </header>
@@ -14,19 +14,24 @@
           <source src="@/assets/video/vbg.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="zoom-wrapper" ref="zoomWrapper">
-        <div class="process-wrapper px-32 pb-24" ref="processWrapper">
+      <div class="zoom-wrapper md:h-4/6" ref="zoomWrapper">
+        <div
+          class="process-wrapper px-10 pb-24 flex justify-center items-center place-items-center"
+          ref="processWrapper"
+        >
           <div
             v-for="process in processes"
             :key="process.id"
             :ref="process.id"
-            v-show="process.projects"
-            class="process"
-            :class="{ hidden: !process.selected && !process.visible, zoomed: process.selected }"
+            class="process mr-20"
+            :class="{
+              hidden: !process.selected && !process.visible,
+              zoomed: process.selected,
+            }"
             :style="{
-              width: process.selected ? '600px' : `${process.width}px`,
-              height: process.selected ? 'auto' : `${process.height}px`,
-              marginLeft: `${process.margin}px`,
+              //width: process.selected ? '600px' : `${process.width}px`,
+              marginTop: process.selected ? 'auto' : `${process.height}px`,
+              marginLeft: process.selected ? '' : `${process.margin}px`,
             }"
             @click="selectProcess(process)"
           >
@@ -39,7 +44,7 @@
                   </li>
                 </ul>
 
-                <div class="process-link">
+                <div class="process-link" v-if="process.projects.length > 0">
                   <nuxt-link :to="`/processes/${process.id}`" class="btn btn-primary">See our references</nuxt-link>
                 </div>
               </div>
@@ -76,14 +81,15 @@ export default {
 
     this.previousScrollLeft = 0 // Add this line to initialize previousScrollLeft
 
-    this.$refs.zoomWindow.addEventListener('scroll', () => {
-      this.previousScrollLeft = this.$refs.zoomWindow.scrollLeft
-    })
+    // this.$refs.zoomWindow.addEventListener('scroll', () => {
+    //   this.previousScrollLeft = this.$refs.zoomWindow.scrollLeft
+    // })
   },
   methods: {
     async fetchProcesses() {
       try {
         const processes = await this.fetchPosts('processes')
+        console.log(processes)
         this.processes = processes.map((process) => ({
           id: process.slug,
           name: process.title,
@@ -109,7 +115,7 @@ export default {
     },
     calculateProcessPositions() {
       const minSpacing = 100
-      const minProcessHeight = 50
+      const minProcessHeight = 10
 
       let currentPosition = 0
       this.processes.forEach((process) => {
@@ -222,7 +228,6 @@ export default {
 .zoom-window {
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   display: block;
   position: relative;
 }
@@ -245,7 +250,7 @@ export default {
 
 .zoom-wrapper {
   width: 100%; /* Use max-content to expand horizontally */
-  height: 70%;
+  /* height: 70%; */
   position: relative;
   z-index: 2;
   display: flex;
@@ -301,8 +306,9 @@ export default {
 
 .process.zoomed {
   z-index: 2;
-  margin-left: 0 !important;
+  margin-left: 6rem;
 }
+
 .process.zoomed .process-content {
   display: block;
 }

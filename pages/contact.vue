@@ -1,33 +1,35 @@
 <template>
-  <main>
-    <header class="w-full max-w-3xl mx-auto relative mb-4 px-24 px-md-0">
-      <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute -left-0" />
+  <main class="pt-6 md:pt-16">
+    <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
+      <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
       <h1 class="max-w-2xl">{{ content.title }}</h1>
       <nuxt-content :document="content" />
     </header>
-    <section class="w-full max-w-3xl mx-auto px-24 px-md-0">
+
+    <section class="w-full max-w-3xl mx-auto md:px-24">
       <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form">
         <input type="hidden" name="form-name" value="Contact Form" />
         <div class="flex w-full mb-16">
-          <div class="w-1/2 px-10">
+          <div class="w-1/2 pr-2 md:px-10">
             <h2 class="text-lg text-right mb-5">MY PROCESS</h2>
 
             <ProcessList :containerHeight="400" @processListChange="formData.selectedProcess = $event" />
           </div>
-          <div class="w-1/2 px-10">
+          <div class="w-1/2 md:px-10">
             <h2 class="text-lg mb-5">MY TEMPERATURE</h2>
-
-            <VerticalRangeSlider
-              :min="100"
-              :max="1000"
-              :defaultValues="[100, 450]"
-              :containerHeight="400"
-              @sliderValueChange="
-                {
-                  ;(formData.selectedTempMin = $event[0].value), (formData.selectedTempMax = $event[1].value)
-                }
-              "
-            />
+            <div class="pl-10">
+              <VerticalRangeSlider
+                :min="100"
+                :max="1000"
+                :defaultValues="[100, 450]"
+                :containerHeight="400"
+                @sliderValueChange="
+                  {
+                    ;(formData.selectedTempMin = $event[0].value), (formData.selectedTempMax = $event[1].value)
+                  }
+                "
+              />
+            </div>
           </div>
         </div>
         <div class="w-full max-w-2xl">

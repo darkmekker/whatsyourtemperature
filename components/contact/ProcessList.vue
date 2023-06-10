@@ -1,6 +1,6 @@
 <template>
   <div v-if="processes" class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
-    <ul class="">
+    <ul class="my-8 md:my-16">
       <li
         :class="{ selected: selectedProcess === process }"
         v-for="process in processes"
@@ -70,7 +70,6 @@ export default {
 ul {
   list-style: none;
   padding: 0;
-  margin: 100px 0;
 }
 .fade-list {
   mask-image: linear-gradient(to bottom, transparent 0%, black 150px, black calc(100% - 150px), transparent 100%);

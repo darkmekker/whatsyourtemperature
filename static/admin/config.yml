@@ -19,6 +19,7 @@ collections:
     label: 'Projects'
     label_singular: 'Project'
     folder: 'content/projects'
+    orderby: 'title'
     create: true
     format: 'frontmatter'
     slug: '{{slug}}'
