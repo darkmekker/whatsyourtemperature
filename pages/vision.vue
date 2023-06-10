@@ -15,7 +15,7 @@ export default {
   async asyncData({ $content, error }) {
     let content
     try {
-      content = await $content('about/_index').fetch()
+      content = await $content('vision/_index').fetch()
     } catch (e) {
       error({ message: 'Contact data not found' })
     }
