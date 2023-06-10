@@ -43,6 +43,7 @@
           <nuxt-content :document="selectedProject" />
 
           <div v-if="selectedProject.gallery" class="slider mt-8">
+            <ssrCarouselCss />
             <ssr-carousel>
               <div class="slide" v-for="(image, index) in selectedProject.gallery" :key="index">
                 <img :src="image" />
@@ -60,6 +61,9 @@
 </template>
 
 <script>
+import SsrCarousel from 'vue-ssr-carousel'
+import ssrCarouselCss from 'vue-ssr-carousel/index.css'
+
 export default {
   data() {
     return {
