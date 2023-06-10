@@ -2,7 +2,7 @@
   <div>
     <div class="zoom-window overflow-auto md:overflow-hidden" ref="zoomWindow" @click="handleOverlayClick">
       <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-6 md:pt-16 pb-0" ref="mainHeader">
-        <header class="w-full mx-auto mb-4 pt-20 md:px-24 relative">
+        <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
           <h1 class="max-w-2xl">{{ content.title }}</h1>
           <nuxt-content :document="content" />
@@ -14,7 +14,7 @@
           <source src="@/assets/video/vbg.mp4" type="video/mp4" />
         </video>
       </div>
-      <div class="zoom-wrapper md:h-4/6" ref="zoomWrapper">
+      <div class="zoom-wrapper" ref="zoomWrapper">
         <div
           class="process-wrapper px-10 pb-24 flex justify-center items-center place-items-center"
           ref="processWrapper"
@@ -30,7 +30,7 @@
             }"
             :style="{
               //width: process.selected ? '600px' : `${process.width}px`,
-              marginTop: process.selected ? 'auto' : `${process.height}px`,
+              marginTop: process.selected ? '' : `${process.height}px`,
               marginLeft: process.selected ? '' : `${process.margin}px`,
             }"
             @click="selectProcess(process)"
@@ -80,6 +80,13 @@ export default {
     })
 
     this.previousScrollLeft = 0 // Add this line to initialize previousScrollLeft
+
+    this.adjustZoomWrapperHeight()
+
+    // fire adjustZoomWrapperHeight on resize
+    window.addEventListener('resize', () => {
+      this.adjustZoomWrapperHeight()
+    })
 
     // this.$refs.zoomWindow.addEventListener('scroll', () => {
     //   this.previousScrollLeft = this.$refs.zoomWindow.scrollLeft
@@ -163,7 +170,7 @@ export default {
             selectedProcessRect.left - zoomWindowRect.left - (zoomWindowRect.width - selectedProcessRect.width) / 2
           scrollLeft = Math.max(scrollLeft, 0)
           // scroll zoomWindow to the left without animation
-          zoomWindow.scrollTo(scrollLeft, 0)
+          //zoomWindow.scrollTo(scrollLeft, 0)
         })
       }
     },
@@ -202,6 +209,15 @@ export default {
         left: this.previousScrollLeft,
         behavior: 'smooth',
       })
+    },
+
+    adjustZoomWrapperHeight() {
+      // on mount an on resize set the zoomWrapper to the height of zoomWindow minus the height of the header
+      const zoomWindow = this.$refs.zoomWindow
+      const zoomWrapper = this.$refs.zoomWrapper
+      const mainHeader = this.$refs.mainHeader
+
+      zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
     },
 
     adjustZoomWrapperWidth() {
@@ -306,7 +322,9 @@ export default {
 
 .process.zoomed {
   z-index: 2;
-  margin-left: 6rem;
+  min-height: auto;
+  margin-left: 0;
+  margin-top: 4rem;
 }
 
 .process.zoomed .process-content {

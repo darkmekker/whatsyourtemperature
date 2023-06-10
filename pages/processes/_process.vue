@@ -1,39 +1,48 @@
 <template>
-  <main>
-    <section v-if="post">
-      <nav class="mb-8" aria-label="go back">
-        <router-back class="block" />
-      </nav>
-
+  <main class="pt-6 md:pt-14">
+    <div class="video-background" ref="videoBackground">
+      <div class="absolute w-full h-full bg-gradient-to-b from-black"></div>
+      <video class="video" ref="video" autoplay muted loop>
+        <source src="@/assets/video/vbg.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <header class="relative z-10 w-full max-w-4xl mx-auto mb-12 pt-20 md:pt-0 md:px-24">
+      <a href="/" class="absolute top-0 -left-0">
+        <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" />
+      </a>
+      <h1 class="max-w-2xl uppercase mb-6">{{ post.title }}</h1>
+      <nuxt-content :document="post" />
+    </header>
+    <section v-if="post" class="w-full max-w-4xl mx-auto md:px-24">
       <article>
-        <img v-if="post.cover" class="cover-image" :src="post.cover" />
-        <h1>{{ post.title }}</h1>
-        <nuxt-content :document="post" />
-        <!-- List post.subprocesses -->
-
-        <div v-if="post.projects" class="nuxt-content">
-          <ul>
-            <li v-for="(project, index) in post.projects" :key="project.slug" @click="showProject(project.slug)">
-              <div>{{ project.title }}</div>
-
-              <!-- Get the first subprocess that matches the post.subprocesses -->
-              <div v-if="project.subprocesses">
-                <div v-for="(subprocess, index) in project.subprocesses" :key="index">
-                  <div v-if="post.subprocesses.includes(subprocess)">{{ subprocess }}</div>
-                </div>
+        <div v-if="post.projects" class="mb-6">
+          <ul class="list-none grid grid-cols-2 gap-1">
+            <li
+              v-for="(project, index) in post.projects"
+              v-if="project.gallery && project.gallery.length > 0"
+              :key="project.slug"
+              class="cursor-pointer"
+              @click="showProject(project.slug)"
+            >
+              <div
+                class="px-10 py-4 rounded-lg"
+                :class="{
+                  'bg-gray-600 ': selectedProject && selectedProject.slug === project.slug,
+                  '': selectedProject && selectedProject.slug !== project.slug,
+                }"
+              >
+                <div class="uppercase text-lg font-heading leading-6 mb-1">{{ project.title }}</div>
+                <div class="text-base font-heading leading-5">{{ project.subprocesses.replaceAll('-', ' ') }}</div>
               </div>
             </li>
           </ul>
         </div>
 
-        <div v-if="selectedProject">
-          <img v-if="selectedProject.cover" class="cover-image" :src="selectedProject.cover" />
-          <!-- <h6 class="inline py-1 px-2 mr-1 bg-gray text-white text-sm font-medium rounded-sm">{{ post.category }}</h6> -->
-          <h1 class="">{{ selectedProject.title }}</h1>
-          <p class="mt-1 mb-8 text-primary-600 dark:text-primary-400">{{ selectedProject.description }}</p>
+        <div v-if="selectedProject" class="bg-black md:py-8 md:px-10">
+          <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
 
-          <div v-if="selectedProject.gallery" class="slider">
+          <div v-if="selectedProject.gallery" class="slider mt-8">
             <ssr-carousel>
               <div class="slide" v-for="(image, index) in selectedProject.gallery" :key="index">
                 <img :src="image" />
@@ -41,8 +50,8 @@
             </ssr-carousel>
           </div>
           <!-- More link linkText & linkUrl -->
-          <div v-if="selectedProject.moreLinkUrl" class="mt-8">
-            <a :href="selectedProject.moreLinkUrl" class="btn btn-primary">Read more...</a>
+          <div v-if="selectedProject.moreLinkUrl" class="mt-2">
+            <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
           </div>
         </div>
       </article>
@@ -61,6 +70,7 @@ export default {
     let post
     try {
       post = await $content('processes', params.process).fetch()
+      console.log('post:', post)
     } catch (e) {
       error({ message: 'Project not found' })
     }
@@ -97,3 +107,21 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.video-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

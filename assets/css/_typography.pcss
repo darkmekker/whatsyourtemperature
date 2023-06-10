@@ -1,9 +1,4 @@
 @layer base {
-  article {
-    max-width: 80ch;
-    @apply mx-auto;
-  }
-
   h1,
   h2,
   h3,
@@ -26,7 +21,7 @@
 
   h1 {
     @apply font-heading
-      font-bold
+      font-semibold
       text-3xl
       leading-tight
       tracking-tight;
@@ -105,8 +100,7 @@
   }
 
   .nuxt-content {
-    max-width: 80ch;
-    @apply my-8 font-bold;
+    @apply font-bold;
 
     & h1,
     & h2,
@@ -197,11 +191,6 @@
     }
     .subtitle {
       @apply text-3xl;
-    }
-    .nuxt-content {
-      & ul {
-        @apply ml-0;
-      }
     }
   }
 

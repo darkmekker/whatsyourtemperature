@@ -55,7 +55,7 @@ export default {
       },
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&display=swap',
         media: 'print',
         onload: `this.media='all'`,
       },
@@ -63,7 +63,7 @@ export default {
     noscript: [
       {
         innerHTML:
-          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&display=swap" rel="stylesheet">',
+          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">',
       },
     ],
     __dangerouslyDisableSanitizers: ['noscript'],
