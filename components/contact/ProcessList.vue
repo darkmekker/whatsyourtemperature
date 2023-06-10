@@ -2,6 +2,7 @@
   <div v-if="processes" class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
     <ul class="my-8 md:my-16">
       <li
+        class="font-heading"
         :class="{ selected: selectedProcess === process }"
         v-for="process in processes"
         :key="process.slug"
@@ -37,8 +38,12 @@ export default {
         // Call the fetchPosts method to fetch the processes
         const processes = await this.fetchPosts('processes')
 
-        // Update the processes array with the fetched data
-        this.processes = processes
+        // Update the processes array with the fetched data, sort by title
+        this.processes = processes.sort((a, b) => {
+          if (a.title < b.title) return -1
+          if (a.title > b.title) return 1
+          return 0
+        })
 
         // scroll processList to half of the height of the container using nexttick
         this.$nextTick(() => {

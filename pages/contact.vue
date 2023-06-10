@@ -1,6 +1,6 @@
 <template>
-  <main class="pt-6 md:pt-16">
-    <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
+  <main class="pt-6 md:pt-14">
+    <header class="w-full max-w-3xl mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
       <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
       <h1 class="max-w-2xl">{{ content.title }}</h1>
       <nuxt-content :document="content" />
@@ -10,12 +10,12 @@
       <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form">
         <input type="hidden" name="form-name" value="Contact Form" />
         <div class="flex w-full mb-16">
-          <div class="w-1/2 pr-2 md:px-10">
+          <div class="w-1/2 pr-2 md:pr-10">
             <h2 class="text-lg text-right mb-5">MY PROCESS</h2>
 
             <ProcessList :containerHeight="400" @processListChange="formData.selectedProcess = $event" />
           </div>
-          <div class="w-1/2 md:px-10">
+          <div class="w-1/2 md:pl-10">
             <h2 class="text-lg mb-5">MY TEMPERATURE</h2>
             <div class="pl-10">
               <VerticalRangeSlider
