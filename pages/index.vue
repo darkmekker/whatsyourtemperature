@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="zoom-window overflow-auto md:overflow-hidden" ref="zoomWindow" @click="handleOverlayClick">
+    <div class="zoom-window overflow-auto md:overflow-hidden md:h-screen" ref="zoomWindow" @click="handleOverlayClick">
       <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-6 md:pt-16 pb-0" ref="mainHeader">
         <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
@@ -15,15 +15,12 @@
         </video>
       </div>
       <div class="zoom-wrapper" ref="zoomWrapper">
-        <div
-          class="process-wrapper px-10 pb-24 flex justify-center items-center place-items-center"
-          ref="processWrapper"
-        >
+        <div class="process-wrapper px-10 pb-24 flex items-center place-items-center" ref="processWrapper">
           <div
             v-for="process in processes"
             :key="process.id"
             :ref="process.id"
-            class="process mr-20 w-full md:w-auto relative"
+            class="process mr-20 w-full md:w-auto relative md:ml-24 md:mt-8"
             :class="{
               hidden: !process.selected && !process.visible,
               zoomed: process.selected,
@@ -36,7 +33,7 @@
             @click="selectProcess(process)"
           >
             <div class="process-inner">
-              <h1 class="process-name text-shadow">{{ process.name }}</h1>
+              <h1 class="process-name md:text-4xl text-shadow">{{ process.name }}</h1>
               <div class="process-content" v-show="process.selected">
                 <ul class="block font-heading text-lg md:text-xlg">
                   <li v-for="subprocess in process.subprocesses" :key="subprocess" class="text-shadow">
@@ -158,7 +155,7 @@ export default {
           p.selected = p === process
           p.visible = p === process
         })
-        //this.scrollSelectedProcessIntoView()
+        this.scrollSelectedProcessIntoView()
         // scale the videoBackground to 2
       }
     },
@@ -177,7 +174,7 @@ export default {
             selectedProcessRect.left - zoomWindowRect.left - (zoomWindowRect.width - selectedProcessRect.width) / 2
           scrollLeft = Math.max(scrollLeft, 0)
           // scroll zoomWindow to the left without animation
-          //zoomWindow.scrollTo(scrollLeft, 0)
+          zoomWindow.scrollTo(scrollLeft, 0)
         })
       }
     },
@@ -224,8 +221,11 @@ export default {
       const zoomWrapper = this.$refs.zoomWrapper
       const mainHeader = this.$refs.mainHeader
 
-      zoomWrapper.style.height =
-        zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
+      // console.log(zoomWindow.clientHeight)
+      // zoomWrapper.style.height =
+      //   zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
+
+      zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
     },
 
     adjustZoomWrapperWidth() {
@@ -276,15 +276,14 @@ export default {
   /* height: 70%; */
   position: relative;
   z-index: 2;
-  display: flex;
-  align-items: flex-start; /* Align items at the top */
+  display: block;
   overflow: auto;
 }
 .process-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start; /* Align items at the top */
-  width: 200%;
+  width: 100%;
 }
 .process {
   display: block;
@@ -304,7 +303,6 @@ export default {
 
 .process-name {
   position: relative;
-  font-size: 30px;
   text-align: left;
   flex-grow: 1;
   text-transform: uppercase;
@@ -326,8 +324,6 @@ export default {
 .process.zoomed {
   z-index: 2;
   min-height: auto;
-  margin-left: 0;
-  margin-top: 4rem;
 }
 
 /* .process.zoomed .process-content {
