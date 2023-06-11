@@ -19,7 +19,7 @@
       </div>
       <div class="zoom-wrapper" ref="zoomWrapper">
         <div
-          class="process-wrapper px-4 md:px-10 pb-24 grid grid-cols-2 md:gap-4"
+          class="process-wrapper px-4 md:px-10 pb-24 grid grid-cols-2 md:gap-10"
           :class="{ 'place-content-start': selectedProcess, 'place-content-center': !selectedProcess }"
           ref="processWrapper"
         >
