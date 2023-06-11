@@ -3,9 +3,10 @@
     <ul class="my-16">
       <li
         class="font-heading"
-        :class="{ selected: selectedProcess === process }"
+        :class="{ selected: selectedProcess === process.slug }"
         v-for="process in processes"
         :key="process.slug"
+        ref="process"
         @click="selectProcess(process)"
       >
         {{ process.title }}
@@ -26,7 +27,7 @@ export default {
   data() {
     return {
       processes: [],
-      selectedProcess: '',
+      selectedProcess: this.$route.query.process || null,
     }
   },
   mounted() {
@@ -45,9 +46,8 @@ export default {
           return 0
         })
 
-        // scroll processList to half of the height of the container using nexttick
         this.$nextTick(() => {
-          this.$refs.processList.scrollTop = this.containerHeight / 2
+          this.scrollListToView(this.selectedProcess)
         })
       } catch (error) {
         console.error(error)
@@ -57,6 +57,18 @@ export default {
     selectProcess(process) {
       this.selectedProcess = process
       this.$emit('processListChange', process.title)
+      this.scrollListToView(process)
+    },
+    scrollListToView(process) {
+      // scroll processList y position to the selected process. get the process ref by index
+      this.$nextTick(() => {
+        const processIndex = this.processes.findIndex((p) => p.slug === process.slug)
+        if (!this.$refs.process[processIndex]) return
+        this.$refs.process[processIndex].scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+      })
     },
     async fetchPosts(postType) {
       return this.$content(postType)

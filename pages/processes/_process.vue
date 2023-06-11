@@ -53,6 +53,17 @@
             <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
           </div>
         </div>
+
+        <div class="flex justify-between">
+          <nuxt-link :to="`/`" class="btn btn-primary text-sm md:text-base whitespace-nowrap mt-8"
+            >&lt; Return to map</nuxt-link
+          >
+          <nuxt-link
+            :to="`/contact?process=${post.slug}`"
+            class="btn btn-primary text-sm md:text-base whitespace-nowrap mt-8"
+            >Send Request</nuxt-link
+          >
+        </div>
       </article>
     </section>
   </main>
