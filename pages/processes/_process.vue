@@ -42,12 +42,13 @@
         <div v-if="selectedProject" class="bg-black p-4 md:py-8 md:px-10">
           <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
-
-          <ssr-carousel v-show="selectedProject.gallery" class="slider mt-8">
-            <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
-              <img :src="image" />
-            </div>
-          </ssr-carousel>
+          <no-ssr>
+            <ssr-carousel v-show="selectedProject.gallery" class="slider mt-8">
+              <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
+                <img :src="image" />
+              </div>
+            </ssr-carousel>
+          </no-ssr>
           <!-- More link linkText & linkUrl -->
           <div v-if="selectedProject.moreLinkUrl" class="mt-2">
             <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
