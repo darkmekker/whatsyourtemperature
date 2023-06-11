@@ -124,7 +124,7 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-
+/* purgecss start ignore */
 .ssr-carousel-back-button,
 .ssr-carousel-next-button {
   position: absolute;
@@ -339,4 +339,5 @@ export default {
   width: 1px;
   white-space: nowrap;
 }
+/* purgecss end ignore */
 </style>
