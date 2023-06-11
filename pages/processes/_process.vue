@@ -43,7 +43,7 @@
           <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
 
-          <ssr-carousel v-if="selectedProject.gallery" class="slider mt-8">
+          <ssr-carousel v-show="selectedProject.gallery" class="slider mt-8">
             <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
               <img :src="image" />
             </div>
