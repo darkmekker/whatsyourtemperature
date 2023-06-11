@@ -1,6 +1,7 @@
 <template>
   <main class="pt-6 md:pt-14">
     <div class="video-background" ref="videoBackground">
+      <div class="absolute w-full h-2/3 z-40 bg-gradient-to-b from-black via-black via-30%"></div>
       <video class="video" ref="video" autoplay loop muted playsinline>
         <source src="@/assets/video/vbg.mov" type="video/mp4" />
         <source src="@/assets/video/vbg.mp4" type="video/mp4" />
