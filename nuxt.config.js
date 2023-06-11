@@ -125,9 +125,19 @@ export default {
     mode: 'postcss',
     // ? Safelisting docs: https://purgecss.com/safelisting.html
     safelist: {
-      standard: [/ssr.*/],
+      //standard: [/ssr.*/],
       deep: [/dark/, /light/, /btn/, /icon/, /main/],
-      greedy: [/^card/, /image$/, /title$/, /^nuxt-content/, /code/, /pre/, /token/, /^vue-content-placeholders/],
+      greedy: [
+        /^card/,
+        /image$/,
+        /title$/,
+        /^nuxt-content/,
+        /code/,
+        /pre/,
+        /carousel/,
+        /token/,
+        /^vue-content-placeholders/,
+      ],
     },
   },
   colorMode: {
