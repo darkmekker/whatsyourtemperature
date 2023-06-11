@@ -43,11 +43,9 @@
           <nuxt-content :document="selectedProject" />
 
           <div v-if="selectedProject.gallery" class="slider mt-8">
-            <ssr-carousel>
-              <div class="slide" v-for="(image, index) in selectedProject.gallery" :key="index">
-                <img :src="image" />
-              </div>
-            </ssr-carousel>
+            <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
+              <img :src="image" />
+            </div>
           </div>
           <!-- More link linkText & linkUrl -->
           <div v-if="selectedProject.moreLinkUrl" class="mt-2">
