@@ -1,13 +1,15 @@
 <template>
   <main class="pt-6 md:pt-14">
     <header class="w-full max-w-3xl mx-auto mb-12 pt-20 md:pt-0 md:px-24 relative">
-      <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
+      <a href="/" class="absolute top-0 -left-0">
+        <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" />
+      </a>
       <h1 class="max-w-2xl mb-8">{{ content.title }}</h1>
       <nuxt-content :document="content" />
     </header>
 
     <section class="w-full max-w-3xl mx-auto md:px-24">
-      <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form">
+      <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form" action="/contact-success">
         <input type="hidden" name="form-name" value="Contact Form" />
         <div class="flex w-full mb-16">
           <div class="w-1/2 pr-2 md:pr-10">
