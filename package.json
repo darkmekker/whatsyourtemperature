@@ -1,8 +1,8 @@
 {
   "name": "ntn-boilerplate",
   "version": "2.1.4",
-  "description": "Nuxt-Tailwind-NetlifyCMS boilerplate",
-  "author": "Sven Parker <hello+dev@svenparker.com> (https://svenparker.com)",
+  "description": "Promeos Microsite",
+  "author": "Mark Dekker <hello+dev@markdekker.com> (https://markdekker.com)",
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -18,6 +18,7 @@
     "@nuxt/content": "^1.15.1",
     "lodash": "^4.17.21",
     "nuxt": "^2.15.8",
+    "vue-mobile-detection": "^1.0.0",
     "vue-ssr-carousel": "^2.2.0"
   },
   "devDependencies": {

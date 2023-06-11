@@ -42,13 +42,12 @@
         <div v-if="selectedProject" class="bg-black p-4 md:py-8 md:px-10">
           <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
-          <no-ssr>
-            <ssr-carousel v-show="selectedProject.gallery" class="slider mt-8">
-              <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
-                <img :src="image" />
-              </div>
-            </ssr-carousel>
-          </no-ssr>
+
+          <div v-show="selectedProject.gallery" class="slider mt-8">
+            <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
+              <img :src="image" />
+            </div>
+          </div>
           <!-- More link linkText & linkUrl -->
           <div v-if="selectedProject.moreLinkUrl" class="mt-2">
             <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
@@ -125,8 +124,8 @@ export default {
   object-fit: cover;
 }
 /* purgecss start ignore */
-.ssr-carousel-back-button,
-.ssr-carousel-next-button {
+.div-back-button,
+.div-next-button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -145,16 +144,16 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.ssr-carousel-back-button {
+.div-back-button {
   left: 2%;
 }
 
-.ssr-carousel-next-button {
+.div-next-button {
   right: 2%;
 }
 
-.ssr-carousel-back-icon,
-.ssr-carousel-next-icon {
+.div-back-icon,
+.div-next-icon {
   display: inline-block;
   width: 42px;
   height: 42px;
@@ -166,41 +165,41 @@ export default {
   transition: opacity 0.2s;
 }
 
-[aria-disabled] > .ssr-carousel-back-icon,
-[aria-disabled] > .ssr-carousel-next-icon {
+[aria-disabled] > .div-back-icon,
+[aria-disabled] > .div-next-icon {
   opacity: 0.1;
   cursor: default;
 }
 
-:not([aria-disabled]) > .ssr-carousel-back-icon,
-:not([aria-disabled]) > .ssr-carousel-next-icon {
+:not([aria-disabled]) > .div-back-icon,
+:not([aria-disabled]) > .div-next-icon {
   opacity: 0.5;
 }
 
 @media (hover: hover) {
-  :not([aria-disabled]) > .ssr-carousel-back-icon:hover,
-  :not([aria-disabled]) > .ssr-carousel-next-icon:hover {
+  :not([aria-disabled]) > .div-back-icon:hover,
+  :not([aria-disabled]) > .div-next-icon:hover {
     opacity: 0.85;
   }
 }
 
-:not([aria-disabled]) > .ssr-carousel-back-icon:active,
-:not([aria-disabled]) > .ssr-carousel-next-icon:active {
+:not([aria-disabled]) > .div-back-icon:active,
+:not([aria-disabled]) > .div-next-icon:active {
   opacity: 1;
 }
 
-:not([aria-disabled]) > .ssr-carousel-back-icon.active,
-:not([aria-disabled]) > .ssr-carousel-next-icon.active {
+:not([aria-disabled]) > .div-back-icon.active,
+:not([aria-disabled]) > .div-next-icon.active {
   opacity: 1;
 }
 
-.ssr-carousel-back-icon:before,
-.ssr-carousel-next-icon:before {
+.div-back-icon:before,
+.div-next-icon:before {
   content: '';
   position: relative;
 }
 
-.ssr-carousel-back-icon:before {
+.div-back-icon:before {
   width: 0;
   height: 0;
   background: 0;
@@ -210,7 +209,7 @@ export default {
   left: -2px;
 }
 
-.ssr-carousel-next-icon:before {
+.div-next-icon:before {
   width: 0;
   height: 0;
   background: 0;
@@ -220,7 +219,7 @@ export default {
   left: 2px;
 }
 
-.ssr-carousel-dot-button {
+.div-dot-button {
   display: inline-block;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -236,13 +235,13 @@ export default {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.ssr-carousel-dots {
+.div-dots {
   margin-top: 10px;
   display: flex;
   justify-content: center;
 }
 
-.ssr-carousel-dot-icon {
+.div-dot-icon {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -253,54 +252,54 @@ export default {
   transition: opacity 0.2s;
 }
 
-[aria-disabled] > .ssr-carousel-dot-icon {
+[aria-disabled] > .div-dot-icon {
   opacity: 1;
   background: rgba(0, 0, 0, 0.7);
   cursor: default;
 }
 
-:not([aria-disabled]) > .ssr-carousel-dot-icon {
+:not([aria-disabled]) > .div-dot-icon {
   opacity: 0.5;
 }
 
 @media (hover: hover) {
-  :not([aria-disabled]) > .ssr-carousel-dot-icon:hover {
+  :not([aria-disabled]) > .div-dot-icon:hover {
     opacity: 0.85;
   }
 }
 
-:not([aria-disabled]) > .ssr-carousel-dot-icon:active {
+:not([aria-disabled]) > .div-dot-icon:active {
   opacity: 1;
 }
 
-:not([aria-disabled]) > .ssr-carousel-dot-icon.active {
+:not([aria-disabled]) > .div-dot-icon.active {
   opacity: 1;
 }
 
-.ssr-carousel-track {
+.div-track {
   display: flex;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
 }
 
-.ssr-carousel-track.dragging {
+.div-track.dragging {
   pointer-events: none;
 }
 
-.ssr-carousel-slide {
+.div-slide {
   flex-shrink: 0;
 }
 
-.ssr-carousel-mask.disabled .ssr-carousel-slide[aria-hidden='true'] {
+.div-mask.disabled .div-slide[aria-hidden='true'] {
   display: none;
 }
 
-.ssr-carousel {
+.div {
   touch-action: pan-y;
 }
 
-.ssr-carousel-slides {
+.div-slides {
   position: relative;
 }
 
@@ -308,25 +307,25 @@ export default {
   position: absolute;
 }
 
-.ssr-carousel-mask {
+.div-mask {
   position: relative;
 }
 
-.ssr-carousel-mask:not(.no-mask) {
+.div-mask:not(.no-mask) {
   overflow: hidden;
 }
 
-.ssr-carousel-mask:not(.disabled):not(.not-draggable) {
+.div-mask:not(.disabled):not(.not-draggable) {
   cursor: -webkit-grab;
   cursor: grab;
 }
 
-.ssr-carousel-mask:not(.disabled):not(.not-draggable).pressing {
+.div-mask:not(.disabled):not(.not-draggable).pressing {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
 
-.ssr-carousel-visually-hidden {
+.div-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);

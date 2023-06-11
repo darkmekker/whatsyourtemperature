@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="zoom-window overflow-auto md:overflow-hidden md:h-screen" ref="zoomWindow" @click="handleOverlayClick">
-      <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-6 md:pt-16 pb-0" ref="mainHeader">
+      <main class="relative z-40 pt-6 md:pt-16 pb-0" ref="mainHeader">
         <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
           <h1 class="max-w-2xl mb-6">{{ content.title }}</h1>
@@ -10,33 +10,44 @@
       </main>
 
       <div class="video-background" ref="videoBackground">
+        <div class="absolute w-full h-1/2 z-40 bg-gradient-to-b from-black via-black via-30%"></div>
+
         <video class="video" ref="video" autoplay loop muted playsinline>
           <source src="@/assets/video/vbg.mov" type="video/mp4" />
           <source src="@/assets/video/vbg.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="zoom-wrapper" ref="zoomWrapper">
-        <div class="process-wrapper px-10 pb-24 flex items-center place-items-center" ref="processWrapper">
+        <div
+          class="process-wrapper px-4 md:px-10 pb-24 grid grid-cols-2 md:gap-4"
+          :class="{ 'place-content-start': selectedProcess, 'place-content-center': !selectedProcess }"
+          ref="processWrapper"
+        >
           <div
             v-for="process in processes"
             :key="process.id"
             :ref="process.id"
-            class="process mr-20 w-full md:w-auto relative md:ml-24 md:mt-8"
+            class="process w-full md:w-auto md:min-h-[200] md:min-w-[200px] relative md:mt-8"
             :class="{
-              hidden: !process.selected && !process.visible,
+              hidden: !$isMobile() && !process.selected && !process.visible,
               zoomed: process.selected,
+              'mb-4 md:mb-0': !process.selected,
+              'mb-0 md:ml-24': process.selected,
             }"
             :style="{
               //width: process.selected ? '600px' : `${process.width}px`,
               marginTop: process.selected ? '' : `${process.height}px`,
-              marginLeft: process.selected ? '' : `${process.margin}px`,
+              //marginLeft: process.selected ? '' : `${process.margin}px`,
+              minHeight: !$isMobile() ? '150px' : ``,
             }"
             @click="selectProcess(process)"
           >
-            <div class="process-inner">
-              <h1 class="process-name md:text-4xl text-shadow">{{ process.name }}</h1>
+            <div class="process-inner p-4" :class="{ 'pl-6': process.selected }">
+              <h1 class="process-name md:text-4xl text-shadow" :class="{ 'md:text-5xl mb-2': process.selected }">
+                {{ process.name }}
+              </h1>
               <div class="process-content" v-show="process.selected">
-                <ul class="block font-heading text-lg md:text-xlg">
+                <ul class="block font-heading text-lg md:text-3xl">
                   <li v-for="subprocess in process.subprocesses" :key="subprocess" class="text-shadow">
                     {{ subprocess }}
                   </li>
@@ -50,7 +61,7 @@
                   >
                 </div>
                 <div class="block mt-4" @click="showAllProcesses()">
-                  <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt; back</div>
+                  <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt; close</div>
                 </div>
               </div>
             </div>
@@ -62,6 +73,10 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueMobileDetection from 'vue-mobile-detection'
+Vue.use(VueMobileDetection)
+
 export default {
   layout: 'home',
   async asyncData({ $content, error }) {
@@ -81,7 +96,7 @@ export default {
   },
   mounted() {
     this.fetchProcesses().then(() => {
-      this.calculateProcessPositions()
+      if (!this.$isMobile()) this.calculateProcessPositions()
     })
 
     this.previousScrollLeft = 0 // Add this line to initialize previousScrollLeft
@@ -143,9 +158,9 @@ export default {
       })
 
       // fire with nexttick
-      this.$nextTick(() => {
-        this.adjustZoomWrapperWidth()
-      })
+      // this.$nextTick(() => {
+      //   this.adjustZoomWrapperWidth()
+      // })
     },
     selectProcess(process) {
       if (this.selectedProcess === process) {
@@ -291,19 +306,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  margin-bottom: 20px;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
-  min-width: 200px;
-  min-height: 200px;
 }
 
 .process-inner {
 }
 
 .process-name {
-  position: relative;
   text-align: left;
   flex-grow: 1;
   text-transform: uppercase;
@@ -311,10 +321,10 @@ export default {
 .process-name:after {
   content: '';
   position: absolute;
-  top: 4px;
-  left: -10px;
+  top: 8px;
+  left: 0;
   width: 5px;
-  height: 100px;
+  height: 120px;
   border-left: 5px solid #fff;
 }
 
@@ -327,16 +337,8 @@ export default {
   min-height: auto;
 }
 
-/* .process.zoomed .process-content {
-  display: block;
-}
-.process.zoomed .process-name {
-  font-size: 50px;
-} */
 .process.zoomed .process-name:after {
-  border-left-width: 8px;
-  left: -22px;
-  height: 400px;
+  height: 100%;
 }
 
 .process-link {
