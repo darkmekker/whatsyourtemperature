@@ -10,6 +10,7 @@
 
     <section class="w-full max-w-3xl mx-auto md:px-24">
       <h2 class="uppercase">Submission received &#10004;</h2>
+      <nuxt-link :to="`/`" class="btn btn-primary text-sm md:text-base whitespace-nowrap mt-8">Home</nuxt-link>
     </section>
   </main>
 </template>
