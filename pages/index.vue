@@ -164,7 +164,7 @@ export default {
     },
     selectProcess(process) {
       if (this.selectedProcess === process) {
-        this.selectedProcess = null
+        this.resetScrollPosition()
       } else {
         this.selectedProcess = process
         this.processes.forEach((p) => {
