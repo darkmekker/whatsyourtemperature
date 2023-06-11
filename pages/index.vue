@@ -12,6 +12,7 @@
       <div class="video-background" ref="videoBackground">
         <video class="video" ref="video" autoplay loop muted playsinline>
           <source src="@/assets/video/vbg.mov" type="video/mp4" />
+          <source src="@/assets/video/vbg.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="zoom-wrapper" ref="zoomWrapper">

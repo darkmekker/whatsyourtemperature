@@ -107,7 +107,16 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {},
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(mov)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          esModule: false,
+        },
+      })
+    },
   },
   /*
    ** Custom additions configuration
