@@ -75,7 +75,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/main.pcss'],
+  css: ['@/assets/css/main.pcss', 'vue-ssr-carousel/index.css'],
   /*
    ** Plugins to load before mounting the App
    */

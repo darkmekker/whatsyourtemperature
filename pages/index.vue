@@ -23,7 +23,7 @@
             v-for="process in processes"
             :key="process.id"
             :ref="process.id"
-            class="process mr-20"
+            class="process mr-20 w-full md:w-auto relative"
             :class="{
               hidden: !process.selected && !process.visible,
               zoomed: process.selected,
@@ -37,15 +37,22 @@
           >
             <div class="process-inner">
               <h1 class="process-name text-shadow">{{ process.name }}</h1>
-              <div class="process-content">
-                <ul class="subprocesses font-heading" v-show="process.selected">
+              <div class="process-content" v-show="process.selected">
+                <ul class="block font-heading text-lg md:text-xlg">
                   <li v-for="subprocess in process.subprocesses" :key="subprocess" class="text-shadow">
                     {{ subprocess }}
                   </li>
                 </ul>
 
-                <div class="process-link" v-if="process.projects.length > 0">
-                  <nuxt-link :to="`/processes/${process.id}`" class="btn btn-primary">See our references</nuxt-link>
+                <div class="block process-link mt-8" v-if="process.projects.length > 0">
+                  <nuxt-link
+                    :to="`/processes/${process.id}`"
+                    class="btn btn-primary text-sm md:text-base whitespace-nowrap"
+                    >See our references</nuxt-link
+                  >
+                </div>
+                <div class="block mt-4" @click="showAllProcesses()">
+                  <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt; back</div>
                 </div>
               </div>
             </div>
@@ -217,7 +224,8 @@ export default {
       const zoomWrapper = this.$refs.zoomWrapper
       const mainHeader = this.$refs.mainHeader
 
-      zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
+      zoomWrapper.style.height =
+        zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
     },
 
     adjustZoomWrapperWidth() {
@@ -243,7 +251,6 @@ export default {
 <style scoped>
 .zoom-window {
   width: 100%;
-  height: 100vh;
   display: block;
   position: relative;
 }
@@ -271,7 +278,7 @@ export default {
   z-index: 2;
   display: flex;
   align-items: flex-start; /* Align items at the top */
-  overflow-x: auto;
+  overflow: auto;
 }
 .process-wrapper {
   display: flex;
@@ -312,10 +319,6 @@ export default {
   border-left: 5px solid #fff;
 }
 
-.process-content {
-  display: none;
-}
-
 .process.hidden {
   opacity: 0;
 }
@@ -327,25 +330,16 @@ export default {
   margin-top: 4rem;
 }
 
-.process.zoomed .process-content {
+/* .process.zoomed .process-content {
   display: block;
 }
 .process.zoomed .process-name {
   font-size: 50px;
-}
+} */
 .process.zoomed .process-name:after {
   border-left-width: 8px;
   left: -22px;
   height: 400px;
-}
-
-.subprocesses {
-  display: block;
-  margin: 15px 0 50px;
-  list-style-type: none;
-  padding: 0;
-  font-size: 35px;
-  line-height: 1.2;
 }
 
 .process-link {
