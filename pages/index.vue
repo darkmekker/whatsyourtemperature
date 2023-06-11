@@ -4,7 +4,7 @@
       <main class="relative z-40 bg-gradient-to-b from-black via-black via-30% pt-6 md:pt-16 pb-0" ref="mainHeader">
         <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
-          <h1 class="max-w-2xl">{{ content.title }}</h1>
+          <h1 class="max-w-2xl mb-6">{{ content.title }}</h1>
           <nuxt-content :document="content" />
         </header>
       </main>
@@ -222,11 +222,11 @@ export default {
       const zoomWrapper = this.$refs.zoomWrapper
       const mainHeader = this.$refs.mainHeader
 
-      // console.log(zoomWindow.clientHeight)
-      // zoomWrapper.style.height =
-      //   zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
+      //alert(zoomWindow.clientHeight)
+      zoomWrapper.style.height =
+        zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
 
-      zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
+      //zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
     },
 
     adjustZoomWrapperWidth() {
