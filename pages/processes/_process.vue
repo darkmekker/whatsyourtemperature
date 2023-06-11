@@ -28,7 +28,7 @@
               <div
                 class="p-4 md:px-10 rounded-lg"
                 :class="{
-                  'bg-gray-600 ': selectedProject && selectedProject.slug === project.slug,
+                  'bg-gray-600': selectedProject && selectedProject.slug === project.slug,
                   '': selectedProject && selectedProject.slug !== project.slug,
                 }"
               >
@@ -43,11 +43,11 @@
           <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
 
-          <div v-if="selectedProject.gallery" class="slider mt-8">
+          <ssr-carousel v-if="selectedProject.gallery" class="slider mt-8">
             <div class="slide mb-4" v-for="(image, index) in selectedProject.gallery" :key="index">
               <img :src="image" />
             </div>
-          </div>
+          </ssr-carousel>
           <!-- More link linkText & linkUrl -->
           <div v-if="selectedProject.moreLinkUrl" class="mt-2">
             <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
