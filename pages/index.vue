@@ -10,7 +10,7 @@
       </main>
 
       <div class="video-background" ref="videoBackground">
-        <video class="video" ref="video" autoplay muted loop>
+        <video class="video" ref="video" autoplay muted loop playsinline>
           <source src="@/assets/video/vbg.mp4" type="video/mp4" />
         </video>
       </div>
