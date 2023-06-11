@@ -16,7 +16,7 @@
     <section v-if="post" class="w-full max-w-4xl mx-auto md:px-24">
       <article>
         <div v-if="post.projects" class="mb-6">
-          <ul class="list-none grid grid-cols-2 gap-1">
+          <ul class="list-none grid md:grid-cols-2 gap-1">
             <li
               v-for="(project, index) in post.projects"
               v-if="project.gallery && project.gallery.length > 0"
@@ -25,7 +25,7 @@
               @click="showProject(project.slug)"
             >
               <div
-                class="px-10 py-4 rounded-lg"
+                class="p-4 md:px-10 rounded-lg"
                 :class="{
                   'bg-gray-600 ': selectedProject && selectedProject.slug === project.slug,
                   '': selectedProject && selectedProject.slug !== project.slug,
@@ -38,12 +38,11 @@
           </ul>
         </div>
 
-        <div v-if="selectedProject" class="bg-black md:py-8 md:px-10">
+        <div v-if="selectedProject" class="bg-black p-4 md:py-8 md:px-10">
           <h2 class="text-lg uppercase mb-4">{{ selectedProject.title }}</h2>
           <nuxt-content :document="selectedProject" />
 
           <div v-if="selectedProject.gallery" class="slider mt-8">
-            <ssrCarouselCss />
             <ssr-carousel>
               <div class="slide" v-for="(image, index) in selectedProject.gallery" :key="index">
                 <img :src="image" />
@@ -62,7 +61,6 @@
 
 <script>
 import SsrCarousel from 'vue-ssr-carousel'
-import ssrCarouselCss from 'vue-ssr-carousel/index.css'
 
 export default {
   data() {
