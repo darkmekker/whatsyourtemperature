@@ -9,7 +9,7 @@
     </header>
 
     <section class="w-full max-w-3xl mx-auto md:px-24">
-      <form @submit.prevent="submitForm" netlify ref="form" name="Contact" action="/contact-success">
+      <form @submit.prevent="submitForm" netlify ref="form" name="Contact">
         <div class="flex w-full mb-16">
           <div class="w-1/2 pr-2 md:pr-10">
             <h2 class="text-lg text-center md:text-right mb-5">MY PROCESS</h2>
