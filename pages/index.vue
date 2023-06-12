@@ -60,7 +60,7 @@
                     >See our references</nuxt-link
                   >
                 </div>
-                <div class="block mt-4" @click="showAllProcesses()">
+                <div class="block mt-8" @click="showAllProcesses()">
                   <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt; close</div>
                 </div>
               </div>
@@ -240,9 +240,7 @@ export default {
       const zoomWrapper = this.$refs.zoomWrapper
       const mainHeader = this.$refs.mainHeader
 
-      //alert(zoomWindow.clientHeight)
-      zoomWrapper.style.height =
-        zoomWindow.clientHeight > 800 ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
+      zoomWrapper.style.height = !this.$isMobile() ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
 
       //zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
     },
