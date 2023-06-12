@@ -9,7 +9,7 @@
     </header>
 
     <section class="w-full max-w-3xl mx-auto md:px-24">
-      <form @submit.prevent="submitForm" netlify ref="form" name="Contact Form" action="/contact-success">
+      <form @submit.prevent="submitForm" netlify ref="form" name="Contact" action="/contact-success">
         <input type="hidden" name="form-name" value="Contact Form" />
         <div class="flex w-full mb-16">
           <div class="w-1/2 pr-2 md:pr-10">
