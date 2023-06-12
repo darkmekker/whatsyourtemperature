@@ -5,7 +5,7 @@
         <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
           <h1 class="max-w-2xl mb-6">{{ content.title }}</h1>
-          <nuxt-content :document="content" />
+          <nuxt-content class="max-w-2xl" :document="content" />
         </header>
       </main>
 
