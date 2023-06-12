@@ -1,9 +1,9 @@
 <template>
   <div v-if="processes" class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
-    <ul class="my-16">
+    <ul class="my-20">
       <li
         class="font-heading"
-        :class="{ selected: selectedProcess === process.slug }"
+        :class="{ selected: selectedProcess && selectedProcess.slug === process.slug }"
         v-for="process in processes"
         :key="process.slug"
         ref="process"
@@ -12,7 +12,7 @@
         {{ process.title }}
       </li>
     </ul>
-    <input type="hidden" v-model="selectedProcess.title" name="selectedProcess" />
+    <input v-if="selectedProcess" type="hidden" v-model="selectedProcess.title" name="selectedProcess" />
   </div>
 </template>
 
@@ -27,11 +27,14 @@ export default {
   data() {
     return {
       processes: [],
-      selectedProcess: this.$route.query.process || null,
+      selectedProcess: null,
     }
   },
   mounted() {
     this.fetchProcesses()
+
+    console.log('this.$route.query.process', this.$route.query.process)
+    console.log('this.selectedProcess', this.selectedProcess)
   },
   methods: {
     async fetchProcesses() {
@@ -47,7 +50,11 @@ export default {
         })
 
         this.$nextTick(() => {
-          this.scrollListToView(this.selectedProcess)
+          if (this.$route.query.process)
+            this.selectProcess({
+              title: this.$route.query.process,
+              slug: this.$route.query.process,
+            })
         })
       } catch (error) {
         console.error(error)
@@ -55,11 +62,14 @@ export default {
       }
     },
     selectProcess(process) {
+      console.log('selectProcess', process)
+      if (!process.title) return
       this.selectedProcess = process
       this.$emit('processListChange', process.title)
       this.scrollListToView(process)
     },
     scrollListToView(process) {
+      if (!process.title) return
       // scroll processList y position to the selected process. get the process ref by index
       this.$nextTick(() => {
         const processIndex = this.processes.findIndex((p) => p.slug === process.slug)

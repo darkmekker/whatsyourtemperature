@@ -120,7 +120,7 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log('Submit form')
+      console.log('Submit form', this.formData)
       // Perform additional validation or submit logic here
       if (this.$refs.form.checkValidity()) {
         // Copy form data to clipboard
