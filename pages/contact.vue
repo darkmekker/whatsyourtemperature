@@ -26,7 +26,7 @@
             <div class="pl-10">
               <VerticalRangeSlider
                 :min="100"
-                :max="1000"
+                :max="1400"
                 :defaultValues="[100, 450]"
                 :containerHeight="400"
                 @sliderValueChange="
