@@ -6,7 +6,7 @@
       </a>
       <h1 class="max-w-2xl text-center mx-auto">{{ content.title }}</h1>
     </header>
-    <section class="w-full px-4">
+    <section class="w-full px-4 mb-10">
       <div class="max-w-2xl mx-auto text-base text-center">
         <div class="my-2 md:my-8" v-html="content.intro" />
         <div class="" v-if="content.heroimage">
@@ -14,7 +14,7 @@
         </div>
       </div>
     </section>
-    <section v-if="content.blurb1" class="blurb1 w-full py-10 md:py-20 bg-contain bg-no-repeat bg-right-center px-4">
+    <section v-if="content.blurb1" class="blurb1 w-full py-20 md:py-20 bg-contain bg-no-repeat bg-right-center px-4">
       <div class="max-w-2xl mx-auto md:pr-72 text-center md:text-right">
         <h2 class="text-3xl md:text-5xl font-normal leading-tight mb-4 text-shadow">{{ content.blurb1.heading }}</h2>
         <div class="font-medium leading-snug" v-html="content.blurb1.text" />
@@ -28,7 +28,7 @@
         </div>
       </div>
     </section>
-    <section v-if="content.blurb2" class="blurb2 w-full py-10 md:py-20 bg-contain bg-no-repeat bg-left-center px-4">
+    <section v-if="content.blurb2" class="blurb2 w-full py-20 md:py-20 bg-contain bg-no-repeat bg-left-center px-4">
       <div class="max-w-2xl mx-auto md:pl-72 text-center md:text-left">
         <h2 class="text-3xl md:text-5xl font-normal leading-tight mb-4 text-shadow">{{ content.blurb2.heading }}</h2>
         <div class="font-medium leading-snug" v-html="content.blurb2.text" />
