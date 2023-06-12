@@ -24,7 +24,15 @@
             :key="index"
             class="mb-3 timeline-item-bg bg-no-repeat bg-top pt-7"
           >
-            <h2 class="text-5xl leading-snug text-center mb-0 text-shadow" v-html="item.year" />
+            <h2
+              :class="{
+                highlight: item.year === '2023',
+                'bg-clip-text timeline-item-bg text-transparent bg-contain': item.year === '2023',
+                'text-shadow': item.year !== '2023',
+              }"
+              class="text-5xl leading-snug text-center mb-0"
+              v-html="item.year"
+            />
             <p class="text-center leading-tight mt-1 text-shadow">{{ item.text }}</p>
           </div>
         </div>
