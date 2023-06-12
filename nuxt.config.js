@@ -83,11 +83,11 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa', 'vue-ssr-carousel/nuxt'],
+  buildModules: ['@nuxtjs/color-mode', '@nuxtjs/tailwindcss', '@nuxtjs/svg', '@nuxtjs/pwa', '@nuxtjs/markdownit'],
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxt/content', 'nuxt-purgecss', 'vue-ssr-carousel/nuxt'],
+  modules: ['@nuxt/content', 'nuxt-purgecss', '@nuxtjs/markdownit'],
   /*
    ** Build configuration
    */

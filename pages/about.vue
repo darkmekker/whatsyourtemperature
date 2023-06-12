@@ -42,7 +42,7 @@
     </section>
 
     <section class="w-full">
-      <div class="max-w-2xl mx-auto text-center mt-10 md:mt-20 px-4">
+      <div class="max-w-lg mx-auto text-center mt-10 md:mt-20 px-4">
         <div v-html="content.footercontactblurb.text" />
         <div v-if="content.footercontactblurb.moreButtonUrl && content.footercontactblurb.moreButtonText" class="mt-2">
           <nuxt-link
