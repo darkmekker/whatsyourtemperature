@@ -12,7 +12,7 @@
         {{ process.title }}
       </li>
     </ul>
-    <input v-if="selectedProcess" type="hidden" v-model="selectedProcess.title" name="selectedProcess" />
+    <!-- <input v-if="selectedProcess" type="hidden" v-model="selectedProcess.title" name="selectedProcess" /> -->
   </div>
 </template>
 

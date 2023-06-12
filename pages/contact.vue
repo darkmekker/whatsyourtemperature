@@ -15,11 +15,11 @@
           <div class="w-1/2 pr-2 md:pr-10">
             <h2 class="text-lg text-center md:text-right mb-5">MY PROCESS</h2>
 
-            <!-- <ProcessList
+            <ProcessList
               :selectedProcess="formData.selectedProcess"
               :containerHeight="400"
               @processListChange="formData.selectedProcess = $event"
-            /> -->
+            />
           </div>
           <div class="w-1/2 md:pl-10">
             <h2 class="text-lg mb-5 text-center md:text-left">MY TEMPERATURE</h2>
