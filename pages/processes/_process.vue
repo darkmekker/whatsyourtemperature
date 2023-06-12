@@ -50,7 +50,9 @@
           </div>
           <!-- More link linkText & linkUrl -->
           <div v-if="selectedProject.moreLinkUrl" class="mt-2">
-            <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank">Read more...</a>
+            <a :href="selectedProject.moreLinkUrl" class="text-white underline" target="_blank"
+              >Read more on promeos.com...</a
+            >
           </div>
         </div>
 
