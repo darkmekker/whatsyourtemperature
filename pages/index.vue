@@ -61,7 +61,7 @@
                   >
                 </div>
                 <div class="block mt-8" @click="showAllProcesses()">
-                  <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt; close</div>
+                  <div class="btn btn-primary text-sm md:text-base whitespace-nowrap">&lt;</div>
                 </div>
               </div>
             </div>
