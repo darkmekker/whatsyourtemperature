@@ -125,45 +125,44 @@ collections:
         name: 'about'
         fields:
           - { label: Title, name: title, widget: string }
-          - { label: Subtitle, name: subtitle, widget: string }
-          - { label: Image, name: image, widget: image }
+          - { label: Intro, name: intro, widget: markdown }
+          - { label: Hero Image, name: heroimage, widget: image }
           - {
-              label: 'Blurb',
-              name: blurb,
+              label: 'Blurb 1',
+              name: blurb1,
               widget: object,
               fields:
                 [
                   { label: 'Heading', name: 'heading', widget: string },
                   { label: 'Text', name: 'text', widget: 'text' },
+                  { label: 'More button text', name: 'moreButtonText', widget: 'string' },
+                  { label: 'More button URL', name: 'moreButtonUrl', widget: 'string' },
                 ],
             }
           - {
-              label: 'Intro',
-              name: intro,
+              label: 'Blurb 2',
+              name: blurb2,
               widget: object,
               fields:
                 [
                   { label: 'Heading', name: 'heading', widget: string },
                   { label: 'Text', name: 'text', widget: 'text' },
+                  { label: 'More button text', name: 'moreButtonText', widget: 'string' },
+                  { label: 'More button URL', name: 'moreButtonUrl', widget: 'string' },
                 ],
             }
           - {
-              label: 'Products',
-              name: products,
-              widget: list,
-              fields:
-                [{ label: 'Image', name: 'image', widget: 'image' }, { label: 'Text', name: 'text', widget: 'text' }],
-            }
-          - {
-              label: 'Values',
-              name: 'values',
-              widget: 'object',
+              label: 'Footer Contact Blurb',
+              name: footercontactblurb,
+              widget: object,
               fields:
                 [
-                  { label: 'Heading', name: 'heading', widget: string },
-                  { label: 'Text', name: 'text', widget: 'text' },
+                  { label: 'Text', name: 'text', widget: 'markdown' },
+                  { label: 'More button text', name: 'moreButtonText', widget: 'string' },
+                  { label: 'More button URL', name: 'moreButtonUrl', widget: 'string' },
                 ],
             }
+
       - file: 'content/contact/_index.md'
         label: 'Contact Page'
         name: 'contact'

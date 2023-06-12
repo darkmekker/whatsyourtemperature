@@ -117,19 +117,22 @@ export default {
       try {
         const processes = await this.fetchPosts('processes')
         console.log(processes)
-        this.processes = processes.map((process) => ({
-          id: process.slug,
-          name: process.title,
-          content: process.content,
-          subprocesses: process.subprocesses || [],
-          projects: process.projects || [],
-          link: process.link || '',
-          selected: false,
-          visible: true,
-          width: 0,
-          height: 0,
-          margin: 0,
-        }))
+        this.processes = processes
+          // filter processes to only those that have projects
+          //.filter((process) => process.projects && process.projects.length > 0)
+          .map((process) => ({
+            id: process.slug,
+            name: process.title,
+            content: process.content,
+            subprocesses: process.subprocesses || [],
+            projects: process.projects || [],
+            link: process.link || '',
+            selected: false,
+            visible: true,
+            width: 0,
+            height: 0,
+            margin: 0,
+          }))
       } catch (error) {
         console.error(error)
         this.processes = []

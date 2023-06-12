@@ -1,6 +1,6 @@
 <template>
   <div v-if="processes" class="process-list fade-list" :style="{ height: containerHeight + 'px' }" ref="processList">
-    <ul class="my-20">
+    <ul class="my-32">
       <li
         class="font-heading"
         :class="{ selected: selectedProcess && selectedProcess.slug === process.slug }"
