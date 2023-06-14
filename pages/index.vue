@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="zoom-window overflow-auto md:overflow-hidden md:h-screen" ref="zoomWindow" @click="handleOverlayClick">
+    <div class="zoom-window overflow-auto min-h-screen" ref="zoomWindow" @click="handleOverlayClick">
       <main class="relative z-40 pt-6 md:pt-16 pb-0" ref="mainHeader">
         <header class="w-full mx-auto mb-4 pt-20 md:pt-0 md:px-24 relative">
           <img src="@/assets/icons/contentLogo.svg" alt="Promeos Logo" class="absolute top-0 -left-0" />
@@ -240,9 +240,10 @@ export default {
       const zoomWrapper = this.$refs.zoomWrapper
       const mainHeader = this.$refs.mainHeader
 
-      zoomWrapper.style.height = !this.$isMobile() ? `${zoomWindow.clientHeight - mainHeader.clientHeight}px` : ''
-
-      //zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
+      if (!this.$isMobile()) {
+        zoomWrapper.style.height = `${zoomWindow.clientHeight - mainHeader.clientHeight}px`
+        // zoomWrapper.style.overflowY = !this.$isMobile() ? 'hidden' : ''
+      }
     },
 
     adjustZoomWrapperWidth() {
