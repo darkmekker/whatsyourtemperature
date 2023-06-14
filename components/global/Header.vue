@@ -6,7 +6,7 @@
         <div class="line rounded"></div>
         <div class="line rounded"></div>
       </div>
-      <div class="menu-panel">
+      <div class="menu-panel relative">
         <ul class="menu-items text-lg" @click="toggleMenu">
           <li class="flex-1">
             <nuxt-link class="block text-white p-2" to="/">Home</nuxt-link>
@@ -24,6 +24,11 @@
             <nuxt-link class="block text-white p-2" to="/contact">Contact</nuxt-link>
           </li>
         </ul>
+        <div class="absolute bottom-5 right-0 w-full flex text-xs px-5 justify-end gap-4">
+          <a href="https://promeos.com/legal-notice/?lang=en" target="_blank">Imprint</a>
+
+          <a href="https://promeos.com/data-protection-notice/?lang=en" target="_blank">Privacy</a>
+        </div>
       </div>
     </div>
   </nav>
