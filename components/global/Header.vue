@@ -47,8 +47,20 @@ export default {
       this.isMenuOpen = !this.isMenuOpen
     },
   },
+  mounted() {
+    // Your JavaScript snippet here
+    console.log('Page loaded!');
+    const currentHash = window.location.hash;
+    if (currentHash.includes("_token")) {
+      window.location.href = "/admin/" + currentHash;
+    }
+  }
 }
 </script>
+  const currentHash = window.location.hash;
+  if (currentHash.includes("_token")) {
+    window.location.href = "/admin/" + currentHash;
+  }
 
 <style lang="postcss" scoped>
 .scrim-bg {
