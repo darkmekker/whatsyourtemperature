@@ -54,7 +54,7 @@ export default {
     if (currentHash.includes("invite_token")) {
       window.location.href = "/admin/" + currentHash;
     }
-  }
+  } 
 }
 </script>
   const currentHash = window.location.hash;
