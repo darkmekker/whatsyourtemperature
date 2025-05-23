@@ -51,7 +51,7 @@ export default {
     // Your JavaScript snippet here
     console.log('Page loaded!');
     const currentHash = window.location.hash;
-    if (currentHash.includes("_token")) {
+    if (currentHash.includes("invite_token")) {
       window.location.href = "/admin/" + currentHash;
     }
   }
