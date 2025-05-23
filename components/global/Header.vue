@@ -47,7 +47,7 @@ export default {
       this.isMenuOpen = !this.isMenuOpen
     },
   },
-  mounted() {
+  beforeMount() {
     // Your JavaScript snippet here
     console.log('Page loaded!');
     const currentHash = window.location.hash;
